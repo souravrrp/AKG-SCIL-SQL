@@ -1,0 +1,42 @@
+SELECT 
+    ooh.FLOW_STATUS_CODE, 
+    ooh.BOOKED_DATE, 
+    ool.ORDERED_ITEM, 
+    ool.SHIPMENT_PRIORITY_CODE,
+    ool.SCHEDULE_SHIP_DATE, 
+    ool.SHIP_FROM_ORG_ID,
+    ool.ATTRIBUTE3,
+    ool.TAX_DATE,
+    ool.SHIPMENT_NUMBER,
+    ool.INVOICED_QUANTITY,
+    ooh.FLOW_STATUS_CODE,
+    ool.SHIPPED_QUANTITY,
+    ool.UNIT_COST,
+    moh.WAREHOUSE_ORG_CODE,
+    moh.MOV_ORD_HDR_ID,
+    moh.MOV_ORDER_STATUS,
+    moh.MOV_ORDER_NO,
+    mod.DO_NUMBER,
+    mod.CUSTOMER_NUMBER,
+    moh.FINAL_DESTINATION,
+    moh.VEHICLE_NO,
+    moh.KM_PER_LITRE,
+    moh.CREATION_DATE,
+    moh.CONFIRMED_DATE,
+    mod.VAT_CHALLAN_NO,
+    mod.CONFIRM_DATE,
+    mod.CREATION_DATE
+FROM 
+    apps.oe_order_headers_all ooh,
+    apps.oe_order_lines_all ool,
+    xxakg.xxakg_mov_ord_hdr moh,
+    xxakg.xxakg_mov_ord_dtl mod
+WHERE
+    ooh.header_id=ool.header_id
+    AND moh.MOV_ORD_HDR_ID=mod.MOV_ORD_HDR_ID
+    AND ooh.org_id=moh.org_id
+--    AND ooh.org_id=84
+    AND ool.SHIP_FROM_ORG_ID = 201
+    AND ool.SHIPMENT_PRIORITY_CODE = 'DO/RMCOU/94299'
+--    AND ooh.FLOW_STATUS_CODE = 'CLOSED'
+--    AND trunc(ool.ACTUAL_SHIPMENT_DATE) between  '21-JUL-2016' and '22-JUL-2016'

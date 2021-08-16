@@ -1,0 +1,3 @@
+SELECT *
+FROM apps.gme_material_details 
+where ORGANIZATION_ID = 100

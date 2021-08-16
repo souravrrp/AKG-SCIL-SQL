@@ -1,0 +1,15 @@
+SELECT * 
+--warehouse, do_number, mov_order_no, mov_order_date 
+FROM apps.abc
+XXAKG.XXAKG_MOV_ORD_DTL
+--    apps.move_order_detail
+WHERE DO_NUMBER= 'DO/RMCOU/55709'
+--WHERE WAREHOUSE = 'Ready Mix Plant Mirpur'
+AND WAREHOUSE = 'Ready Mix Plant Mirpur'
+--AND TRUNC (MOV_ORDER_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+
+SELECT *
+FROM XXAKG.XXAKG_MOV_ORD_DTL
+WHERE DO_NUMBER =  'DO/RMCOU/55709'
+--WHERE WAREHOUSE = 'Ready Mix Plant Mirpur'
+--AND = 'DO/RMCOU/55709'

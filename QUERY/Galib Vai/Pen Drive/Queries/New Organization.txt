@@ -1,0 +1,55 @@
+RMC Factory, Uttara
+Uttara, Bangladesh
+RMC Factory, Uttara
+
+UTRRMC
+
+
+Ready Mix Plant Uttara
+01-JAN-1950
+Concrete Ready Mix Plant, Uttara
+
+696698
+Dipnogor
+Gabtoly
+Mirpur,
+Dhaka
+
+Bangladesh
+
+Purchase	2400.NUL.4020106.9999.00
+Invoice Price	2400.NUL.4020103.9999.00
+Inventory Ap	2400.NUL.1050102.9999.00
+
+Sales		2400.NUL.3010101.9999.00
+Cost of Goods	2400.NUL.4020102.9999.00
+
+
+Deferred COGS	2400.NUL.4020101.9999.00
+
+
+
+Recei Inv Acc	2400.NUL.2050110.9999.00
+
+
+Clearing Acc	2400.NUL.2050110.9999.00
+
+
+UTR-CEN-ST 	UTTARA CENTRAL STORE
+
+Material	2400.NUL.2050101.9999.00
+Outside Process	2400.NUL.2050101.9999.00
+Materials Overh	2400.NUL.2050101.9999.00
+Overhead	2400.NUL.4032501.9999.00
+Resource	2400.NUL.2050101.9999.00
+Expense		2400.NUL.2050101.9999.00
+
+
+Shipping Network :
+Transfer Credit	2400.NUL.1050103.9999.00
+Purc Price Vari	2400.NUL.4020106.9999.00
+Receivable	2400.NUL.1050103.9999.00
+Payable		2400.NUL.1050103.9999.00
+
+AKG RMC Price List To Uttara
+

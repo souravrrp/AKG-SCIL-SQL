@@ -1,0 +1,33 @@
+select 
+--    *
+    ITEM_CODE_SEGMENT1||'.'||ITEM_CODE_SEGMENT2||'.'||ITEM_CODE_SEGMENT3 ITEM_CODE,
+    VOUCHER_NUMBER,
+    VOUCHER_DATE,
+    ORGANIZATION_ID,
+    ACCOUNT,
+    JE_SOURCE,
+    SUM(NVL(DEBITS,0)) Dr,
+    SUM(NVL(CREDITS,0)) Cr,
+    SUM(NVL(DEBITS,0))-SUM(NVL(CREDITS,0)) Balance
+from apps.xxakg_gl_details_statement_dmv
+where
+    LEDGER_ID=2025
+    and company=2110
+    and account='4020107'
+    and JE_SOURCE='INV'
+    and trunc(VOUCHER_DATE) between '01-AUG-2013' and '31-AUG-2013'
+--    and ITEM_CODE_SEGMENT1||'.'||ITEM_CODE_SEGMENT2||'.'||ITEM_CODE_SEGMENT3='CMNT.PBAG.0001'
+group by
+        ITEM_CODE_SEGMENT1||'.'||ITEM_CODE_SEGMENT2||'.'||ITEM_CODE_SEGMENT3,
+    VOUCHER_NUMBER,
+    VOUCHER_DATE,
+    ORGANIZATION_ID,
+    ACCOUNT,
+    JE_SOURCE
+order by
+        ITEM_CODE_SEGMENT1||'.'||ITEM_CODE_SEGMENT2||'.'||ITEM_CODE_SEGMENT3,
+    VOUCHER_NUMBER,
+    VOUCHER_DATE,
+    ORGANIZATION_ID,
+    ACCOUNT,
+    JE_SOURCE          

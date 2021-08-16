@@ -1,0 +1,127 @@
+		
+		GRN Details
+SELECT 
+    RVT.ORGANIZATION_ID,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+    msi.description Item_Description,
+--    RVT.RECEIPT_NUM,
+--    RVT.RECEIPT_DATE,
+--    RVT.ITEM_DESC,  
+    RVT.LAST_UPDATED_BY,
+    RVT.LAST_UPDATE_DATE,
+    RVT.CREATION_DATE,
+    RVT.TRANSACTION_TYPE,
+    RVT.TRANSACT_QTY
+FROM 
+    APPS.RCV_VRC_TXS_V RVT,
+    inv.mtl_system_items_b msi
+WHERE 
+    RVT.ORGANIZATION_ID = MSI.ORGANIZATION_ID
+    AND RVT.ITEM_ID = MSI.INVENTORY_ITEM_ID
+    AND RVT.ORGANIZATION_ID = 101
+--    AND RVT.RECEIPT_NUM = 1169
+    AND RVT.TRANSACTION_TYPE = 'DELIVER'
+--    AND trunc (RVT.CREATION_DATE) BETWEEN '01-JAN-2015' AND '30-JUN-2015'
+--    AND trunc (RVT.CREATION_DATE) BETWEEN '01-JUN-2014' AND '30-JUN-2015'
+    AND trunc (RVT.CREATION_DATE) BETWEEN '01-JUN-2013' AND '30-JUN-2015'
+GROUP BY
+    RVT.ORGANIZATION_ID,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+    msi.description,
+    RVT.ITEM_DESC,
+    RVT.LAST_UPDATED_BY,
+    RVT.LAST_UPDATE_DATE,
+    RVT.CREATION_DATE,
+    RVT.TRANSACTION_TYPE,
+    RVT.TRANSACT_QTY
+
+
+		Move Details
+SELECT * 
+FROM apps.xxakg_biee_cem_modetail
+WHERE organization_id=101
+--AND trunc(TRANSACTION_DATE) BETWEEN '01-JAN-2015' AND '30-JUN-2015'
+--AND trunc(TRANSACTION_DATE) BETWEEN '01-JUN-2014' AND '30-JUN-2015'
+AND trunc(TRANSACTION_DATE) BETWEEN '01-JUN-2013' AND '30-JUN-2015'
+--AND NATURAL_ACCOUNT = 4030806
+--AND USE_OF_AREA = 'STORE'
+
+
+		Consumption Details
+select
+    msi.inventory_item_id,
+    ood.operating_unit,
+    ood.organization_code,
+    msi.organization_id,
+    mc.segment1 item_category,
+    mc.segment2 item_Type,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 item_code,
+    msi.description,
+    msi.primary_uom_code,
+    msi.ATTRIBUTE9 Spare_Use_Location,
+    msi.attribute29 movement_status,
+    msi.ATTRIBUTE27 FOREIGN_LOCAL,
+    msi.ATTRIBUTE30 SHELF_LOCATION,
+    msi.MIN_MINMAX_QUANTITY,
+    msi.attribute11 Previous_Status_2,
+    msi.ATTRIBUTE12 Previous_Status_3,
+    msi.ATTRIBUTE13 Inventory_Status,
+    apps.fnc_get_item_cost(msi.organization_id,msi.inventory_item_id,'JUN-15') avg_price
+from
+    inv.mtl_system_items_b msi,
+    apps.org_organization_definitions ood,
+    inv.mtl_item_categories mic,
+    inv.mtl_categories_b mc
+where
+    ood.legal_entity=23279
+--    and ood.opera
+    and msi.organization_id=ood.organization_id
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ()     
+----    and (msi.segment1 = 'DRCT')
+--    and msi.description like ('%HR%Coil%')
+    and ood.organization_code='SCI'
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and mic.category_id=mc.category_id
+    and mic.category_set_id=1
+    and msi.organization_id not in (90,91,685)
+--    and mc.segment1 like 'MECHA%'        
+--    and msi.segment1 in ('BSNA')
+--    and msi.segment2 in ('')
+--    and regexp_like(mc.segment2,'GP SHEET|CI')
+--    and msi.attribute29 like '%moving%'
+    and msi.INVENTORY_ITEM_STATUS_CODE='Active'
+
+
+		Onhand See
+
+SELECT moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_code,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code,
+               SUM (moq.primary_transaction_quantity) target_qty,
+--               apps.fnc_get_item_cost(moq.organization_id,moq.inventory_item_id,'JAN-15') item_cost,
+               SUM (moq.SECONDARY_TRANSACTION_QUANTITY) s_target_qty
+FROM 
+          apps.mtl_onhand_quantities_detail moq,
+          inv.mtl_system_items_b msi,
+          apps.org_organization_definitions ood
+where
+    moq.organization_id=ood.organization_id
+--    and msi.description= 'Wash Basin Anjelina VIP yellow- A'
+    and ood.organization_code='CER'
+--    and moq.subinventory_code='RMT - RM'
+    and moq.organization_id=msi.organization_id
+    and moq.inventory_item_id=msi.inventory_item_id
+    and msi.segment1||'.'||msi.segment2||'.'||MSI.SEGMENT3 in ('CPWT.MRCL.0002')
+--    and moq.lot_number in ('UPDA-03-JUN-2015-4')          
+group by
+    moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code
+--    and moq.lot_number in ('UPDA-03-JUN-2015-4')          

@@ -1,0 +1,53 @@
+	inv.mtl_system_items_b msi			
+Number	Name	Window Prompt	Column	Value Set
+15	Invoice UOM	Invoice UOM	ATTRIBUTE15	30 Characters Optional
+20	Shelf Location	Shelf Location	ATTRIBUTE30	40 Chars
+30	Movement Status	Movement Status	ATTRIBUTE29	SCIL Item Movement Status
+40	Foreign/Local	Foreign/Local	ATTRIBUTE27	SCIL Item Sources
+50	Consumable/Repair & Main.	Consumable/Repair & Main.	ATTRIBUTE26	SCIL Item Consumption Type
+60	Spare Use Location	Spare Use Location	ATTRIBUTE9	SPARE ITEM USE LOCATION
+70	Previous Status-2	Previous Status-2(Movement Status)	ATTRIBUTE11	SCIL Item Movement Status
+80	Previous Status-3	Previous Status-3(Movement Status)	ATTRIBUTE12	SCIL Item Movement Status
+90	Inventory Status	Inventory Status	ATTRIBUTE13	AKG Inventory Status Values
+
+
+select
+    msi.inventory_item_id,
+    ood.operating_unit,
+    ood.organization_code,
+    msi.organization_id,
+    mc.segment1 item_category,
+    mc.segment2 item_Type,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 item_code,
+    msi.description,
+    msi.primary_uom_code,
+    msi.ATTRIBUTE9 Spare_Use_Location,
+    msi.attribute29 movement_status,
+    msi.attribute11 Previous_Status_2,
+    msi.ATTRIBUTE12 Previous_Status_3,
+    msi.ATTRIBUTE13 Inventory_Status,
+    apps.fnc_get_item_cost(msi.organization_id,msi.inventory_item_id,'JUN-15') avg_cost
+from
+    inv.mtl_system_items_b msi,
+    apps.org_organization_definitions ood,
+    inv.mtl_item_categories mic,
+    inv.mtl_categories_b mc
+where
+    ood.legal_entity=23279
+--    and ood.opera
+    and msi.organization_id=ood.organization_id
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ()     
+----    and (msi.segment1 = 'DRCT')
+--    and msi.description like ('%HR%Coil%')
+    and ood.organization_code='SCI'
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and mic.category_id=mc.category_id
+    and mic.category_set_id=1
+    and msi.organization_id not in (90,91,685)
+    and mc.segment1 like 'MECHA%'        
+--    and msi.segment1 in ('BSNA')
+--    and msi.segment2 in ('')
+--    and regexp_like(mc.segment2,'GP SHEET|CI')
+--    and msi.attribute29 like '%moving%'
+    and msi.INVENTORY_ITEM_STATUS_CODE='Active'

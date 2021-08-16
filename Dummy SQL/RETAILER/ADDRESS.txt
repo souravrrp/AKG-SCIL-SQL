@@ -1,0 +1,1 @@
+SELECT * FROM APPS.xxakg_cmnt_retailer_address

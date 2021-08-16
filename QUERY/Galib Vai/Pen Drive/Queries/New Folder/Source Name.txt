@@ -1,0 +1,18 @@
+
+select *
+from inv.mtl_material_transactions mmt
+where mmt.transaction_source_name = 'Monthly RM Adjustment'
+--and TRUNC (TO_DATE (CREATION_DATE, 'RRRR/MM/DD HH24:MI:SS')) BETWEEN '01-JAN-2016' AND '29-FEB-2016'
+and trunc (CREATION_DATE) > '01-FEB-2016' 
+
+
+
+select 
+mmt.inventory_item_id,
+mmt.primary_quantity,
+apps.fnc_get_item_cost
+(mmt.organization_id,
+mmt.inventory_item_id,
+to_char(trunc(mmt.transaction_date), 'MON-YYYY')) item_cost
+from inv.mtl_material_transactions mmt
+where mmt.transaction_source_name = 'Special to Transfer OPC Cement'

@@ -1,0 +1,118 @@
+------------------------------------QUALITY_MANAGER>SETUP>TESTS------------------
+SELECT
+*
+FROM
+APPS.GMD_QC_TESTS 
+WHERE 1=1
+AND TEST_CODE='Bend Test'
+
+
+---------------------------------- TEST VALUES---------------------------------------------
+SELECT
+*
+FROM
+APPS.GMD_QC_TEST_VALUES
+WHERE 1=1
+AND TEST_ID='19'
+
+---------------------------------------TEST CODE DETAILS---------------------------------
+SELECT
+*
+FROM
+APPS.GMD_QC_TESTS GQT
+,APPS.GMD_QC_TEST_VALUES GQTV
+WHERE 1=1
+AND GQT.TEST_CODE='Bend Test'
+AND GQTV.TEST_ID=GQT.TEST_ID
+
+------------------------------------QUALITY_MANAGER>SETUP>TEST METHODS-------
+SELECT
+*
+FROM
+APPS.GMD_TEST_METHODS GTM
+WHERE 1=1
+AND TEST_METHOD_CODE='Bend Test'
+
+
+------------------------------------QUALITY_MANAGER>SETUP>TEST CLASSES--------
+SELECT
+*
+FROM
+APPS.GMD_TEST_CLASSES GTC
+WHERE 1=1
+AND TEST_CLASS='Soundnes'
+
+
+------------------------------------QUALITY_MANAGER>SETUP>TEST UNITS-----------
+SELECT
+*
+FROM
+APPS.GMD_UNITS 
+WHERE 1=1
+AND QCUNIT_CODE='Minute'
+
+
+------------------------------------QUALITY_MANAGER>SETUP>SPECIFICATIONS------
+SELECT
+*
+FROM
+APPS.GMD_SPECIFICATIONS GS
+WHERE 1=1 
+AND SPEC_NAME='CMNT.SBLK.0001'
+
+------------------------QUALITY_MANAGER>SETUP>SPECIFICATIONS>Target---------
+SELECT
+*
+FROM
+APPS.GMD_SPEC_TESTS GST
+WHERE 1=1
+AND SPEC_ID='41'
+AND SEQ='70'
+
+-------------------------SPECIFICATION DETAILS------------------------------------------
+SELECT
+*
+FROM
+APPS.GMD_SPECIFICATIONS GS
+,APPS.GMD_SPEC_TESTS GST
+WHERE 1=1
+AND GS.SPEC_ID=GST.SPEC_ID
+AND GS.SPEC_NAME='CMNT.SBLK.0001'
+AND GS.SPEC_ID='41'
+
+
+--------------QUALITY_MANAGER>SPECIFICATIONS>SPECIFICATIONS>VALIDITY RULES------
+SELECT
+*
+FROM
+APPS.GMD_ALL_SPEC_VRS_VL
+WHERE 1=1
+AND SPEC_NAME='CMNT.SBLK.0001'
+AND SPEC_ID='41'
+
+
+-----------------------QUALITY_MANAGER>SAMPLES>ITEM_SAMPLES------------------
+SELECT
+*
+FROM
+APPS.GMD_SAMPLES GS
+WHERE 1=1
+AND SAMPLE_NO='103'
+
+-----------------------QUALITY_MANAGER>RESULTS>RESULTS-------------------------
+SELECT
+*
+FROM
+APPS.GMD_RESULTS GR
+WHERE 1=1
+
+--------------RESULTS DETAILS------------------------------------------------------------
+SELECT
+GS.*
+--GR.*
+FROM
+APPS.GMD_SAMPLES GS
+,APPS.GMD_RESULTS GR
+WHERE 1=1
+AND SAMPLE_NO='103'
+AND GR.SAMPLE_ID=GS.SAMPLE_ID

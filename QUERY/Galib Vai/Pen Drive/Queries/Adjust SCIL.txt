@@ -1,0 +1,27 @@
+
+
+10-FEB-2015 10:00:00
+
+Miscellaneous issue
+
+CMNT.SBLK.0001	CEM SILO 3	30418.87	B
+CMNT.SBLK.0001	CEM SILO 3	31946.07	A
+
+Miscellaneous Recipet
+
+CMNT.OBLK.0001	CEM SILO 4	0	B
+CMNT.OBLK.0001	CEM SILO 4	1832.8	A
+
+
+Monthly Adj Sp VS OPC
+2110.NUL.4020107.9999.00
+
+
+
+31-JAN-2015 10:00:00
+
+Grinding Media Consump JAN-15
+
+2110.NUL.4030806.9999.00
+
+Miscellaneous issue

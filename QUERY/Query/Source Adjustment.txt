@@ -1,0 +1,76 @@
+
+	SCIL
+
+Special to Transfer OPC Cement
+
+As per Referance Scrap Recive
+
+
+
+CMNT.SBLK.0001		
+CMNT.OBLK.0001		
+
+
+2110.NUL.4020107.9999.00
+
+
+
+
+	MRB
+
+Item Qty Transfer for Marble
+Adjust RM for MRB Batch Closing
+
+
+2220.NUL.4020107.9999.00
+
+
+	CER
+
+Item Qty Transfer Wrong Code
+
+2200.NUL.4020107.9999.00
+
+Lot Control for Issue Recived
+
+SORCE : CER_WIP_STCK_RECV_MAY_15
+
+LOT : WIP_ADJST_LOT_1
+
+
+
+	RMC
+
+Monthly RM Adjustment
+
+2400.NUL.4020107.9999.00
+
+
+	AKC
+
+As per Ref Item Code qty Trnsf
+
+2300.NUL.4020107.9999.00
+
+Subinventory Transfer
+CACS.PSUT.0001
+
+
+
+
+	CPL
+
+
+Worng Code to Right Code Trans
+
+2120.NUL.4020107.9999.00
+
+
+
+
+	PSU
+
+Item Qty Transfer for PSU
+
+2110.NUL.4020107.9999.00
+

@@ -1,0 +1,11 @@
+
+AKG Employee Self Service
+AKG RMC DO TRIP Responsibility
+AKG RMC Fixed Asset Inquiry
+AKG RMC General Ledger Manager
+AKG RMC Order Management Manager
+AKG RMC Payables Manager
+AKG RMC Purchasing Manager
+AKG RMC Receivables Manager
+AKG RMC Receivables Receipt User
+RMC Inventory

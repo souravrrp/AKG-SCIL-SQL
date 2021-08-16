@@ -1,0 +1,27 @@
+SELECT
+*
+FROM
+ALL_OBJECTS
+WHERE 1=1
+--AND OBJECT_TYPE IN ('TABLE','VIEW')
+AND OBJECT_NAME LIKE '%FLEX%'
+--AND OWNER IN ('XXAKG','APPS')
+
+
+SELECT
+*
+FROM
+APPS.FND_FLEX_VALUES_VL
+WHERE 1=1
+AND FLEX_VALUE LIKE '%2110%'
+--AND ROWNUM<=7
+
+------------------------------------------------------------------------------------------------
+
+SELECT
+*
+FROM
+ALL_OBJECTS
+WHERE 1=1
+--AND OBJECT_TYPE='PACKAGE'
+--AND OBJECT_NAME='XXAKG_BI_ONT_PKG'

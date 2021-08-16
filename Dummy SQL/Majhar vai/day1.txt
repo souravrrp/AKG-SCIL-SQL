@@ -1,0 +1,37 @@
+select * from  XXAKG.XXAKG_MOV_ORD_HDR 
+WHERE ROWNUM=1;
+
+select * from  apps.xxAKG_OE_DO2MOVE_V
+WHERE ROWNUM=1;
+
+select * from  XXAKG.XXAKG_MOV_ORD_DTL 
+WHERE ROWNUM=1;
+
+select * from  XXAKG.XXAKG_DEL_ORD_HDR
+WHERE ROWNUM=1;
+
+SELECT 
+dbm.REGION_NAME   ,
+ moh.MOV_ORDER_NO,
+     doh.DO_NUMBER,
+         dmv.LINE_QUANTITY,
+             dmv.CUSTOMER_NUMBER,
+                 dmv.CUSTOMER_NAME,
+                     moh.CONFIRMED_DATE,
+                         dmv.ACTUAL_SHIPPED_DATE,
+                            dmv.DO_WAREHOUSE_ORG_NAME,
+                                 moh.FINAL_DESTINATION,
+                                     moh.TRANSPORT_MODE,
+                                      moh.VEHICLE_NO,
+                                       moh.GATE_OUT
+ FROM
+  apps.XXAKG_DISTRIBUTOR_BLOCK_M dbm,
+  XXAKG.XXAKG_MOV_ORD_HDR moh,
+ XXAKG.XXAKG_DEL_ORD_HDR doh,
+ apps.xxAKG_OE_DO2MOVE_V dmv
+--WHERE dmv.ACTUAL_SHIPPED_DATE between '01-Jan-2017' and '02-Jan-2017'
+where  ROWNUM=1;
+
+select * from apps.cement_sales_detail
+WHERE ROWNUM=1;
+

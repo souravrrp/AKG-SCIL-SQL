@@ -1,0 +1,6 @@
+SELECT * 
+FROM apps.xxakg_biee_cem_modetail
+WHERE organization_id=99
+AND trunc(TRANSACTION_DATE) BETWEEN '01-MAY-2015' AND '31-MAY-2015'
+--AND DEPARTMENT = 'MECHANICAL'
+--AND USE_OF_AREA = 'STORE'

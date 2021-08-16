@@ -1,0 +1,426 @@
+﻿begindelays
+DataDelay=0
+CellDelay=0.2
+FormDelay=0.25
+KeyHold=50
+SystemHold=50
+HourGlass=250
+TAB=.1
+ENT=0
+*UP=0
+*DN=.1
+*LT=0
+*RT=0
+*SP=0
+*SAVE=0
+*NB=0
+*PB=0
+*NF=0
+*PF=0
+*NR=0
+*PR=0
+*FR=0
+*LR=0
+*ER=0
+*DR=0
+*SB=0
+*ST=0
+*BM=0
+*QE=0
+*QR=0
+*FI=0
+*FA=0
+*IR=0
+*CL=0
+*FE=0
+*AA=0
+*AB=0
+*AC=0
+*AD=0
+*AE=0
+*AF=0
+*AG=0
+*AH=0
+*AI=0
+*AJ=0
+*AK=0
+*AL=0
+*AM=0
+*AN=0
+*AO=0
+*AP=0
+*AQ=0
+*AR=0
+*AS=0
+*AT=0
+*AU=0
+*AV=0
+*AW=0
+*AX=0
+*AY=0
+*AZ=0
+enddelays
+beginheader
+Data	TAB	TAB	Data	TAB	Data	TAB	Data	*DN																																																																																																				
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+endheader
+beginother
+Window=Oracle Applications - AKG47
+Description=
+CommandGroup=EBS - R12
+PasteCtrlV=1
+endother
+begindata
+BSNA.ANGB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+BSNA.ANGG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+BSNA.ANGI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	24	*DN
+BSNA.ANGP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+BSNA.ANGW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	26	*DN
+BSNA.CWSB.0006	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	12	*DN
+BSNA.CWSG.0007	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	14	*DN
+BSNA.CWSI.0008	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	43	*DN
+BSNA.CWSP.0009	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	18	*DN
+BSNA.CWSW.0010	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	46	*DN
+BSNA.ELAB.0020	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.ELAG.0021	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.ELAI.0022	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+BSNA.ELAP.0023	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.ELAW.0024	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+BSNA.IM0B.0025	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.IM0G.0026	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.IM0I.0027	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+BSNA.IM0P.0028	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.IM0W.0029	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+BSNA.LCAB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.LCAG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.LCAI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.LCAP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.LCAW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+BSNA.MARB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.MARG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.MARP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.MERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.MERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.MERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+BSNA.MERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+BSNA.MERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+BSNA.OCTB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.OCTG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+BSNA.OCTI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	18	*DN
+BSNA.OCTP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+BSNA.OCTW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	20	*DN
+BSNA.OVCB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OVCG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OVCI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.OVCP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OVCW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.SFIB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.SFIG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.SFII.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.SFIP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.SFIW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.SLVB.0041	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	34	*DN
+BSNA.SLVG.0042	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	38	*DN
+BSNA.SLVI.0043	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	118	*DN
+BSNA.SLVP.0044	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	50	*DN
+BSNA.SLVW.0045	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	129	*DN
+BSNA.VINB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.VING.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.VINI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.VINP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.VINW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.VRBB.0048	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.VRBG.0049	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+BSNA.VRBI.0050	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	19	*DN
+BSNA.VRBP.0046	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+BSNA.VRBW.0051	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	21	*DN
+BSNA.VRSB.0052	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.VRSG.0053	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.VRSI.0054	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+BSNA.VRSP.0047	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+BSNA.VRSW.0055	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+CMDA.IMSB.0009	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+CMDA.IMSG.0010	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+CMDA.IMSI.0011	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	16	*DN
+CMDA.IMSP.0012	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+CMDA.IMSW.0013	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	13	*DN
+CMDA.VERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+CMDA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	12	*DN
+CMDA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	41	*DN
+CMDA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	13	*DN
+CMDA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	50	*DN
+MBSA.ANGB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.ANGG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.ANGI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MBSA.ANGP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.ANGW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MBSA.CWMB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.CWMG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.CWMI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+MBSA.CWMP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MBSA.CWMW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+MBSA.ELAI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.ELAW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.LCAI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.LCAW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.MERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.MERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.MERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.OCTG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.OCTI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MBSA.OCTP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.OCTW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MBSA.SLVB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MBSA.SLVG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MBSA.SLVI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	13	*DN
+MBSA.SLVP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+MBSA.SLVW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	15	*DN
+MBSA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MBSA.VERI.0002	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MBSA.VERW.0002	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.VIVI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.VIVW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MCMA.IMSI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MCMA.IMSP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MCMA.IMSW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MCMA.VERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MCMA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MCMA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+MCMA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MCMA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+MPDA.CWNB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.CWNG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.CWNI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+MPDA.CWNP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPDA.CWNW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+MPDA.OCTI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPDA.OCTP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.OCTW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPDA.SILB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPDA.SILG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPDA.SILI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+MPDA.SILP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+MPDA.SILW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+MPDA.VERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+MPDA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MPDA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+MPDA.VIVI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPDA.VIVW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPNA.LILB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPNA.LILG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MPNA.LILI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+MPNA.LILP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MPNA.LILW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+MPNA.LOTB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MPNA.LOTG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+MPNA.LOTI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	18	*DN
+MPNA.LOTP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	13	*DN
+MPNA.LOTW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	26	*DN
+MPNA.ORCB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MPNA.ORCG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+MPNA.ORCI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+MPNA.ORCP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+MPNA.ORCW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	14	*DN
+MWTA.IMHI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MWTA.IMHP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MWTA.IMHW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MWTA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MWTA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+MWTA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+MWTA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+PANA.LILB.0006	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+PANA.LILG.0007	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	12	*DN
+PANA.LILI.0008	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	36	*DN
+PANA.LILP.0009	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	20	*DN
+PANA.LILW.0010	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	51	*DN
+PANA.LOTB.0011	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	43	*DN
+PANA.LOTG.0012	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	53	*DN
+PANA.LOTI.0013	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	167	*DN
+PANA.LOTP.0014	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	92	*DN
+PANA.LOTW.0015	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	238	*DN
+PANA.ORCB.0016	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	24	*DN
+PANA.ORCG.0017	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	30	*DN
+PANA.ORCI.0018	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	92	*DN
+PANA.ORCP.0019	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	51	*DN
+PANA.ORCW.0020	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	132	*DN
+PDLA.CWNB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+PDLA.CWNG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+PDLA.CWNI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	32	*DN
+PDLA.CWNP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	14	*DN
+PDLA.CWNW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	35	*DN
+PDLA.SILB.0006	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	21	*DN
+PDLA.SILG.0007	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	24	*DN
+PDLA.SILI.0008	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	75	*DN
+PDLA.SILP.0009	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	32	*DN
+PDLA.SILW.0010	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	81	*DN
+PDLA.VERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	14	*DN
+PDLA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	16	*DN
+PDLA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	50	*DN
+PDLA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	21	*DN
+PDLA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	54	*DN
+PDLA.VINB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+PDLA.VING.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+PDLA.VINI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+PDLA.VINP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+PDLA.VINW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+PEDA.OCTB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+PEDA.OCTG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+PEDA.OCTI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	15	*DN
+PEDA.OCTP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	6	*DN
+PEDA.OCTW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	16	*DN
+PEDA.SFIB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+PEDA.SFIG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+PEDA.SFII.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+PEDA.SFIP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+PEDA.SFIW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+WCLA.MARB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	17	*DN
+WCLA.MARG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	19	*DN
+WCLA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	95	*DN
+WCLA.MARP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	21	*DN
+WCLA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	81	*DN
+WCLA.STLI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WCLA.STLW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WCMA.MARB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WCMA.MARG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+WCMA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+WCMA.MARP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	5	*DN
+WCMA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	10	*DN
+WTMA.MARB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WTMA.MARG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	2	*DN
+WTMA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+WTMA.MARP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+WTMA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+WTMA.VIVI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WTMA.VIVW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+WTNA.IMHB.0003	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+WTNA.IMHG.0004	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+WTNA.IMHI.0005	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	19	*DN
+WTNA.IMHP.0006	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+WTNA.IMHW.0007	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	16	*DN
+WTNA.MARB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	16	*DN
+WTNA.MARG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	18	*DN
+WTNA.MARI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	90	*DN
+WTNA.MARP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	20	*DN
+WTNA.MARW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	76	*DN
+WTNA.VERB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	7	*DN
+WTNA.VERG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+WTNA.VERI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	41	*DN
+WTNA.VERP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	9	*DN
+WTNA.VERW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	35	*DN
+WTNA.VIVI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+WTNA.VIVW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	8	*DN
+MBSA.IM0W.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+MBSA.IM0I.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OCSB.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OCSG.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OCSI.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	3	*DN
+BSNA.OCSP.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	1	*DN
+BSNA.OCSW.0001	TAB	TAB	7-Jun-16	TAB	7-Jun-16	TAB	4	*DN
+enddata
+beginoptions
+AutoTab=false
+HourGlass=false
+AutoInsert=true
+ProgressBar=true
+TitleSize=false
+DataColour=16777215
+CommandColour=16777215
+KeystrokeColour=16777215
+DataSource=0
+ImportLoad=0
+EnableMacro=1
+DatePicker=1
+LegacyKeyMode=0
+IEOnly=0
+StopIfNotIE=0
+LoadControl=0
+UseBC=0
+SkipBlank=1
+Protection=￶�￶�￮￥￮￥￦￭￦￭￮￥￮￥￶�￶�ￎￅￎￅￆￍￆￍￎￅￎￅ￶�￶�￮￥￮￥￦￭￦￭￮￥￮￥￶�￶�%CR%%CR%v}v}nenefmfmnenev}v}NE
+endoptions
+beginformat
+FontName=Default
+FontSize=8
+ColumnWidth1=121
+endformat
+begincommands
+Command	EBS - R12	EBS - 11i	EBS - 10.7/11.0 NCA	EBS - 10.7SC	Siebel	SAP	Peoplesoft	JDE	Dynamics	Other	Description
+TAB	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	TAB key
+ENT	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	Enter key
+*UP	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	Up arrow key
+*DN	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	Down arrow key
+*LT	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	Left arrow key
+*RT	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	Right arrow key
+*SP	\%F%V	\%F%V	\%A%{DOWN 4}{ENTER}	\%A%A							Save & proceed
+*SAVE	\^S	\^S	\^S	\{F10}							Save
+*NB	\+{PGDN}	\+{PGDN}	\+{PGDN}	\^{PGDN}							Next Block
+*PB	\+{PGUP}	\+{PGUP}	\+{PGUP}	\^{PGUP}							Previous Block
+*NF	\{TAB}	\{TAB}	\%G%{DOWN}{ENTER}	\{TAB}							Next Field
+*PF	\+{TAB}	\+{TAB}	\%G%{DOWN 2}{ENTER}	\+{TAB}							Previous Field
+*NR	\{DOWN}	\{DOWN}	\%G%{DOWN 3}{ENTER}	\+{DOWN}							Next record
+*PR	\{UP}	\{UP}	\%G%{DOWN 4}{ENTER}	\+{UP}							Previous record
+*FR	\%V%DF	\%V%DF	\%G%{DOWN 5}{ENTER}	\%G%F							First record
+*LR	\%V%DL	\%V%DL	\%G%{DOWN 6}{ENTER}	\%G%L							Last record
+*ER	\{F6}	\{F6}	\{F6}	\+{F4}							Erase record
+*DR	\^{UP}	\^{UP}	\^{UP}	\+{F6}							Delete record
+*SB	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	Space bar
+*ST	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	Select field text
+*BM	\^B	\^B	\^B	\{F5}							Block menu
+*QE	\{F11}	\{F11}	\{F11}	\{F7}							Query enter
+*QR	\^{F11}	\^{F11}	\^{F11}	\{F8}							Query run
+*FI	\%V%F	\%V%F	\%Q%{DOWN}{ENTER}								Find
+*FA	\%V%I	\%V%I	\%Q%{DOWN 2}{ENTER}								Find all
+*IR	\^{DOWN}	\^{DOWN}	\^{DOWN}	\{F6}							Insert record
+*CL	\{F5}	\{F5}	\{F5}	\^U							Clear field
+*FE	\^E	\^E	\^E	\^E							Field edit
+*AA	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	Alt A
+*AB	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	Alt B
+*AC	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	Alt C
+*AD	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	Alt D
+*AE	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	Alt E
+*AF	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	Alt F
+*AG	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	Alt G
+*AH	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	Alt H
+*AI	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	Alt I
+*AJ	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	Alt J
+*AK	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	Alt K
+*AL	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	Alt L
+*AM	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	Alt M
+*AN	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	Alt N
+*AO	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	Alt O
+*AP	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	Alt P
+*AQ	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	Alt Q
+*AR	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	Alt R
+*AS	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	Alt S
+*AT	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	Alt T
+*AU	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	Alt U
+*AV	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	Alt V
+*AW	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	Alt W
+*AX	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	Alt X
+*AY	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	Alt Y
+*AZ	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	Alt Z
+endcommands
+beginhdrgrid
+																																																																																																			
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+begindata
+enddata
+endhdrgrid
+beginftrgrid
+																																																																																																		
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+begindata
+enddata
+endftrgrid

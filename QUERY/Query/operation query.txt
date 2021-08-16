@@ -1,0 +1,12 @@
+select 
+"    OPRN_ID,"
+"    OPRN_NO,"
+"    OPRN_VERS,"
+"    OPRN_DESC,"
+    OWNER_ORGANIZATION_ID
+from
+    apps.gmd_operations gop
+where
+    gop.owner_organization_id=99
+    and delete_mark=0
+#NAME?

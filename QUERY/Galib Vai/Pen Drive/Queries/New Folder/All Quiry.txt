@@ -1,0 +1,1357 @@
+PEDB.OCTI.0001
+PANA.LILY.0001	Asian Pan Lily-Yellow-A
+
+MDCN.DRUG.2035
+
+
+SELECT * 
+FROM apps.xxakg_biee_cem_modetail
+WHERE organization_id= 99
+AND TRUNC(TRANSACTION_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+AND CREAT_BY= '2767'
+--AND FROM_SUBINVENTORY_CODE = 'RMT-CEN ST'
+
+
+
+
+SELECT * FROM APPS.XXAKG_MOV_ORD_HDR
+WHERE TRUNC (CREATION_DATE) BETWEEN '31-JAN-2015' AND '31-JAN-2015'
+AND WAREHOUSE_ORG_CODE = 'SCI'
+--AND ORG_ID = 85
+
+
+SELECT r.ROUTING_NO as Process ,h.ACTUAL_START_DATE,h.actual_cmplt_date,h.batch_close_date, h.attribute3 as Shift,to_date(h.attribute4,'RRRR/MM/DD HH24:MI:SS') as Production_Date,
+to_char(t.transaction_date, 'DD-MON-YYYY HH24:MI:SS') as trans_date,
+--t.transaction_id ,
+ DECODE(h.batch_status,-1,'Cancelled',1,'Pending',2,'WIP',3,'Completed',4,'Closed') as batch_status, h.batch_no as batch_no,
+--t.transaction_source_id as trans_source_id, 
+decode(d.line_type,-1,'Ingredients',1,'Product',2,'By Product') as Line_type ,-- t.trx_source_line_id as material_detail_id,
+t.organization_id, msi.concatenated_segments , mtt.transaction_type_name ,
+--t.subinventory_code, 
+--t.locator_id, 
+lt.lot_number as lot_number,
+--t.primary_quantity, 
+case when lt.lot_number is not null then lt.transaction_quantity else t.transaction_quantity end as trans_qty,-- lt.transaction_quantity as lot_qty,
+t.transaction_uom as trans_uom,
+nvl(lot.attribute1 ,0) as "Length",lot.grade_code as "GRADE",
+t.secondary_transaction_quantity as sec_qty, t.secondary_uom_code
+FROM apps.mtl_material_transactions t, 
+     apps.gme_material_details d,
+     apps.gme_batch_header h,
+     apps.mtl_transaction_lot_numbers lt,
+     apps.mtl_lot_numbers lot,
+     apps.gmd_routings_b r ,
+     apps.mtl_system_items_kfv msi,
+     apps.mtl_transaction_types mtt
+WHERE t.transaction_source_type_id = 5
+AND t.organization_id in (99)
+--AND h.batch_id in (XXXXXX)
+AND t.transaction_source_id = h.batch_id
+AND t.organization_id = h.organization_id
+AND d.batch_id = h.batch_id
+AND d.material_detail_id = t.trx_source_line_id
+AND lt.transaction_id(+) = t.transaction_id 
+AND lot.lot_number(+) = lt.lot_number 
+AND lot.organization_id(+) = lt.organization_id
+AND lot.inventory_item_id(+) = lt.inventory_item_id
+AND r.routing_id =h.routing_id 
+AND r.owner_organization_id =h.organization_id 
+AND d.inventory_item_id =msi.inventory_item_id 
+and d.organization_id =msi.organization_id
+AND t.transaction_type_id =mtt.transaction_type_id 
+--AND H.BATCH_NO=9026
+ AND H.organization_id =99
+ and TO_DATE (h.attribute4, 'RRRR/MM/DD HH24:MI:SS') >= to_date('2013/12/01 00:00:00','RRRR/MM/DD HH24:MI:SS')
+and TO_DATE (h.attribute4, 'RRRR/MM/DD HH24:MI:SS') <= to_date('2013/12/26 00:00:00','RRRR/MM/DD HH24:MI:SS')
+ORDER BY h.batch_no,  line_type
+
+
+
+
+
+
+SELECT 
+    MMT.TRANSACTION_SOURCE_NAME,
+    MSI.SEGMENT1||'.'||MSI.SEGMENT2||'.'||MSI.SEGMENT3 ITEM_CODE,
+    MSI.DESCRIPTION,
+    MMT.SUBINVENTORY_CODE,
+    MSI.PRIMARY_UOM_CODE,
+    TRUNC(MMT.TRANSACTION_DATE),
+    SUM(NVL(MMT.PRIMARY_QUANTITY,0)) TXN_QTY--,
+--    MMT.*
+FROM 
+    APPS.MTL_SYSTEM_ITEMS_B MSI,
+    APPS.MTL_MATERIAL_TRANSACTIONS MMT
+WHERE MSI.ORGANIZATION_ID=MMT.ORGANIZATION_ID
+AND MMT.TRANSACTION_SOURCE_NAME = 'Physical vs Oracle Adj'
+AND MMT.ORGANIZATION_ID = '99'
+AND MSI.INVENTORY_ITEM_ID=MMT.INVENTORY_ITEM_ID
+--AND ROWNUM<=5
+GROUP BY   
+    MMT.TRANSACTION_SOURCE_NAME,
+    MSI.SEGMENT1||'.'||MSI.SEGMENT2||'.'||MSI.SEGMENT3,
+    MSI.DESCRIPTION,
+    MMT.SUBINVENTORY_CODE,
+    MSI.PRIMARY_UOM_CODE,
+    TRUNC(MMT.TRANSACTION_DATE)
+
+
+
+
+SELECT a.ORGANIZATION_ID, a.STATUS, a.PERIOD_NUMBER, a.PERIOD_YEAR, a.PERIOD_NAME, b.ORGANIZATION_NAME
+FROM apps.ORG_ACCT_PERIODS_V a, APPS.ORG_ORGANIZATION_DEFINITIONS b
+WHERE PERIOD_NAME='DEC-14'
+AND a.ORGANIZATION_ID= b.ORGANIZATION_ID
+order by 1
+
+select * from apps.org_organization_definitions
+
+
+select 
+     ood.organization_code,
+     gbh.BATCH_NO,
+     DECODE(gbh.BATCH_STATUS,
+         -1,'CANCELED',
+          1,'PENDING',
+          2,'WIP',
+          3,'COMPLETED',
+          4,'CLOSED') BATCH_STATUS,  
+     count(*) COUNT
+from 
+    GME.GME_BATCH_HEADER gbh,
+    apps.org_organization_definitions ood 
+where 
+    ood.legal_entity=23279
+    and gbh.organization_id=ood.organization_id 
+    and trunc(to_date(gbh.attribute4,'YYYY/MM/DD HH24:MI:SS')) between '01-FEB-2015' and '28-FEB-2015'  
+group by
+    ood.ORGANIZATION_code,
+    gbh.BATCH_NO, 
+    gbh.BATCH_STATUS
+order by
+    ood.ORGANIZATION_code,
+    gbh.BATCH_NO, 
+    gbh.BATCH_STATUS
+
+
+
+
+
+SELECT MSI.SEGMENT1||'.'||MSI.SEGMENT2||'.'||MSI.SEGMENT3 ITEM_CODE, MSI.DESCRIPTION, MC.SEGMENT1||'|'||MC.SEGMENT2 ITEM_CATEGORY, MIC.ORGANIZATION_ID
+FROM APPS.MTL_SYSTEM_ITEMS_B MSI,
+          APPS.MTL_ITEM_CATEGORIES MIC,
+          APPS.MTL_CATEGORIES_B MC
+WHERE MSI.ORGANIZATION_ID=MIC.ORGANIZATION_ID
+AND     MSI.INVENTORY_ITEM_ID=MIC.INVENTORY_ITEM_ID
+AND     MIC.CATEGORY_ID=MC.CATEGORY_ID
+AND     MIC.ORGANIZATION_ID=101
+--AND     MC.SEGMENT1 = 'FINISH GOODS'
+--AND     MC.SEGMENT2 LIKE 'PD%'
+--AND     MSI.DESCRIPTION LIKE '%YELLOW%'
+--AND     MSI.SEGMENT1 LIKE 'RFWC%'
+AND     MSI.SEGMENT2 = 'TYRE'
+AND     MSI.SEGMENT1 = 'TYRE'
+
+
+
+
+
+select
+    ood.organization_code,
+    trunc(mmt.transaction_date) txn_date,
+    sum(case when mmt.transaction_quantity<0 then nvl(mmt.primary_quantity,0) else 0 end) issue_qty,
+    sum(case when mmt.transaction_quantity>0 then nvl(mmt.primary_quantity,0) else 0 end) rcv_qty
+from
+    inv.mtl_system_items_b msi,
+    inv.mtl_material_transactions mmt,
+    apps.org_organization_definitions ood
+where  
+    msi.inventory_item_id=mmt.inventory_item_id
+    and msi.organization_id=mmt.organization_id
+    and msi.organization_id=ood.organization_id
+    and ood.operating_unit=85
+--    and ood.organization_code='SCI'
+    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ('DRCT.CLNK.0001')
+    and trunc(mmt.transaction_date) between '01-JAN-2015' and '31-JAN-2015'
+group by 
+    organization_code,
+    trunc(mmt.transaction_date)
+order by 
+    organization_code,trunc(mmt.transaction_date)
+
+
+
+
+
+
+SELECT 
+     oq.inventory_item_id,
+     msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+     msi.description Item_Description,
+     msi.primary_uom_code,
+     mc.segment1 Item_Category,
+     mc.segment2 Item_Type,       
+     oq.organization_id,
+     ood.organization_code,
+     oq.subinventory_code,
+     SUM (target_qty) P_cls_qty,
+--     apps.fnc_get_item_cost(oq.organization_id,oq.inventory_item_id,'JAN-15') Item_cost,
+     SUM (s_target_qty) s_cls_qty
+FROM (  SELECT organization_id,
+               subinventory_code,
+               inventory_item_id,
+               SUM (primary_transaction_quantity) target_qty,
+               SUM (SECONDARY_TRANSACTION_QUANTITY) s_target_qty
+          FROM apps.mtl_onhand_quantities_detail moq
+          GROUP BY organization_id,
+               subinventory_code,
+               inventory_item_id
+        UNION
+        SELECT organization_id,
+               subinventory_code,
+               inventory_item_id,
+               -SUM (primary_quantity) target_qty,
+               -SUM (SECONDARY_TRANSACTION_QUANTITY)
+                  s_target_qty
+          FROM apps.mtl_material_transactions mmt
+         WHERE trunc(transaction_date) >=trunc(NVL (:p_date_from+1,SYSDATE))
+               AND (mmt.Logical_Transaction = 2 OR mmt.Logical_Transaction IS NULL)
+      GROUP BY organization_id,
+               subinventory_code,
+               inventory_item_id) oq,
+      inv.mtl_system_items_b msi,
+      inv.mtl_item_categories mic,
+      inv.mtl_categories_b mc,
+      apps.org_organization_definitions ood
+where
+    oq.inventory_item_id=msi.inventory_item_id
+    and oq.organization_id=msi.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and msi.organization_id=mic.organization_id
+    and mic.category_id=mc.category_id
+    and oq.organization_id=ood.organization_id
+    and ood.operating_unit=86
+--    and ood.organization_code='SCI'
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ('DRCT.CLNK.0001')
+--    and ood.organization_id=504
+--    and mc.segment1 in ('INGREDIENT','INDIRECT MATERIAL','WIP','FINISH GOODS')
+    and mc.segment1 in ('WIP','FINISH GOODS')
+--    and mc.segment2 in ('CANDY','GIFT ITEM-CANDY')
+--    and regexp_like(mc.segment1, 'SCRAP%')
+--    and msi.inventory_item_id in (343409)
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ()
+--    and oq.subinventory_code='BEV - STGN'
+--    and mc.segment1 in ('CIVIL')
+--    and rownum<10
+GROUP BY
+    oq.inventory_item_id,
+     msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+     msi.description,
+     mc.segment1,
+     mc.segment2,
+     msi.primary_uom_code,
+     oq.organization_id,
+     ood.organization_code,
+     oq.subinventory_code
+--  HAVING SUM (target_qty) <> 0
+
+
+
+
+
+
+
+
+SELECT moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_code,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code,
+               SUM (moq.primary_transaction_quantity) target_qty,
+--               apps.fnc_get_item_cost(moq.organization_id,moq.inventory_item_id,'JAN-15') item_cost,
+               SUM (moq.SECONDARY_TRANSACTION_QUANTITY) s_target_qty
+FROM 
+          apps.mtl_onhand_quantities_detail moq,
+          inv.mtl_system_items_b msi,
+          apps.org_organization_definitions ood
+where
+    moq.organization_id=ood.organization_id
+    and ood.organization_code='SCI'
+    and moq.organization_id=msi.organization_id
+    and moq.inventory_item_id=msi.inventory_item_id
+--    and moq.lot_number='B06981114'
+--    and msi.segment1||'.'||msi.segment2||'.'||MSI.SEGMENT3 in ('PRIN.STAT.2419','PRIN.STAT.2420','AUTO.AUTO.2662')
+--    and moq.lot_number in ()          
+group by
+    moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code
+ 
+
+
+SELECT moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_code,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code,
+               SUM (moq.primary_transaction_quantity) target_qty,
+--               apps.fnc_get_item_cost(moq.organization_id,moq.inventory_item_id,'JAN-15') item_cost,
+               SUM (moq.SECONDARY_TRANSACTION_QUANTITY) s_target_qty
+FROM 
+          apps.mtl_onhand_quantities_detail moq,
+          inv.mtl_system_items_b msi,
+          apps.org_organization_definitions ood
+where
+    moq.organization_id=ood.organization_id
+    and ood.organization_code= 'RMC'
+    and moq.organization_id=msi.organization_id
+--    and msi.description LIKE '%Tyre%'
+    and moq.inventory_item_id=msi.inventory_item_id
+--    and moq.lot_number='B06981114'
+--    and msi.segment1||'.'||msi.segment2||'.'||MSI.SEGMENT3 in ('PRIN.STAT.2419','PRIN.STAT.2420','AUTO.AUTO.2662')
+--    and moq.lot_number in ()          
+group by
+    moq.organization_id,
+               moq.inventory_item_id,
+               msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+               msi.description,
+               moq.lot_number,
+               moq.subinventory_code
+
+
+
+
+
+
+
+
+SELECT *
+FROM  APPS.FM_FORM_MST 
+WHERE OWNER_ORGANIZATION_ID = 100
+
+SELECT *
+FROM  APPS.gmd_recipes
+WHERE OWNER_ORGANIZATION_ID = 100
+
+
+
+
+
+
+
+
+/* Formatted on 7/3/2014 2:44:52 PM (QP5 v5.136.908.31019) */
+SELECT a.OPERATING_UNIT,
+       a.ORGANIZATION_CODE,
+       a.ORGANIZATION_ID,
+       a.SUBINVENTORY_CODE,
+       a.INVENTORY_ITEM_ID,
+       a.ITEM_CODE,
+       a.ITEM_DESCRIPTION,
+       a.UOM,
+       a.ITEM_CATG,
+       a.ITEM_TYPE,
+       a.item_Source,
+       a.movement_status,
+       CASE
+          WHEN TYP = 'OPN'
+          THEN
+             (  a.OPENING_QTY
+              + a.ITR_RCV
+              + a.PO_RECEVING
+              + a.PO_CORRECTION_RCV
+              + a.WIP_RETUN
+              + a.WIP_COMPLETION
+              + a.WIP_BY_PRODUCT_RCV
+              + a.PRA_RCV
+              + a.RMA_RCV
+              + a.DORG_RCV
+              + a.MISC_RCV
+              + a.ITR_ISSUE
+              + a.MO_ISSUE
+              + a.NRG_ISSUE
+              + a.RTV_ISSUE
+              + a.PO_CORRCTION_ISSUE
+              + a.MI2C_ISSUE
+              + a.WIP_COMPLETION_RE_ISSUE
+              + a.WIP_ISSUE
+              + a.WIPBR_ISSUE
+              + a.PRA_ISSUE
+              + a.DORG_ISSUE
+              + a.MISC_ISSUE
+              + a.SLS_ISSUE)
+          ELSE
+             0
+       END
+          OPN_QTY,
+       CASE
+          WHEN TYP = 'RCV'
+          THEN
+             (  a.OPENING_QTY
+              + a.ITR_RCV
+              + a.PO_RECEVING
+              + a.PO_CORRECTION_RCV
+              + a.WIP_RETUN
+              + a.WIP_COMPLETION
+              + a.WIP_BY_PRODUCT_RCV
+              + a.PRA_RCV
+              + a.RMA_RCV
+              + a.DORG_RCV
+              + a.MISC_RCV
+              + a.ITR_ISSUE
+              + a.MO_ISSUE
+              + a.NRG_ISSUE
+              + a.RTV_ISSUE
+              + a.PO_CORRCTION_ISSUE
+              + a.MI2C_ISSUE
+              + a.WIP_COMPLETION_RE_ISSUE
+              + a.WIP_ISSUE
+              + a.WIPBR_ISSUE
+              + a.PRA_ISSUE
+              + a.DORG_ISSUE
+              + a.MISC_ISSUE
+              + a.SLS_ISSUE)
+          ELSE
+             0
+       END
+          RCV_QTY,
+       CASE
+          WHEN TYP = 'ISU'
+          THEN
+             (  a.OPENING_QTY
+              + a.ITR_RCV
+              + a.PO_RECEVING
+              + a.PO_CORRECTION_RCV
+              + a.WIP_RETUN
+              + a.WIP_COMPLETION
+              + a.WIP_BY_PRODUCT_RCV
+              + a.PRA_RCV
+              + a.RMA_RCV
+              + a.DORG_RCV
+              + a.MISC_RCV
+              + a.ITR_ISSUE
+              + a.MO_ISSUE
+              + a.NRG_ISSUE
+              + a.RTV_ISSUE
+              + a.PO_CORRCTION_ISSUE
+              + a.MI2C_ISSUE
+              + a.WIP_COMPLETION_RE_ISSUE
+              + a.WIP_ISSUE
+              + a.WIPBR_ISSUE
+              + a.PRA_ISSUE
+              + a.DORG_ISSUE
+              + a.MISC_ISSUE
+              + a.SLS_ISSUE)
+          ELSE
+             0
+       END
+          ISSUE_QTY,
+       a.current_cost,
+       a.OPN_COST
+  FROM (SELECT TYP,
+               OPERATING_UNIT,
+               ORGANIZATION_CODE,
+               ORGANIZATION_ID,
+               SUBINVENTORY_CODE,
+               INVENTORY_ITEM_ID,
+               ITEM_CODE,
+               ITEM_DESCRIPTION,
+               UOM,
+               ITEM_CATG,
+               ITEM_TYPE,
+               item_Source,
+               movement_status,
+               OPENING_QTY,
+               ITR_RCV,
+               PO_RECEVING,
+               PO_CORRECTION_RCV,
+               WIP_RETUN,
+               WIP_COMPLETION,
+               WIP_BY_PRODUCT_RCV,
+               PRA_RCV,
+               RMA_RCV,
+               DORG_RCV,
+               MISC_RCV,
+               ITR_ISSUE,
+               MO_ISSUE,
+               NRG_ISSUE,
+               RTV_ISSUE,
+               PO_CORRCTION_ISSUE,
+               MI2C_ISSUE,
+               WIP_COMPLETION_RE_ISSUE,
+               WIP_ISSUE,
+               WIPBR_ISSUE,
+               PRA_ISSUE,
+               DORG_ISSUE,
+               MISC_ISSUE,
+               SLS_ISSUE,
+               apps.fnc_get_item_cost (organization_id,
+                                       inventory_item_id,
+                                       TO_CHAR (:p_from_date, 'MON-RR'))
+                  current_cost,
+               apps.fnc_get_item_cost (
+                  organization_id,
+                  inventory_item_id,
+                  DECODE (TO_CHAR (:p_from_date, 'DD'),
+                          '01', TO_CHAR (:p_from_date - 1, 'MON-RR'),
+                          TO_CHAR (:p_from_date, 'MON-RR')))
+                  OPN_COST
+          FROM (WITH ON_HAND
+                        AS (  SELECT oq.organization_id,
+                                     oq.subinventory_code,
+                                     oq.inventory_item_id,
+                                     SUM (target_qty) op_qty
+                                FROM (  SELECT organization_id,
+                                               subinventory_code,
+                                               inventory_item_id,
+                                               SUM(primary_transaction_quantity)
+                                                  target_qty
+                                          FROM apps.mtl_onhand_quantities_detail moq
+                                      GROUP BY organization_id,
+                                               subinventory_code,
+                                               inventory_item_id
+                                      UNION
+                                        SELECT organization_id,
+                                               subinventory_code,
+                                               inventory_item_id,
+                                               -SUM (primary_quantity)
+                                                  target_qty
+                                          FROM apps.mtl_material_transactions mmt
+                                         WHERE TRUNC (mmt.transaction_date) >=
+                                                  :p_from_date
+                                               AND (mmt.Logical_Transaction =
+                                                       2
+                                                    OR mmt.Logical_Transaction IS NULL)
+                                      GROUP BY organization_id,
+                                               subinventory_code,
+                                               inventory_item_id) oq
+                            GROUP BY organization_id,
+                                     subinventory_code,
+                                     inventory_item_id
+                              HAVING SUM (target_qty) <> 0),
+                     RCV
+                        AS (  SELECT organization_id,
+                                     subinventory_code,
+                                     inventory_item_id,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            12,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        ITR_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            18,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        PO_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            71,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        PO_CORRECTION_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            43,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        WIPR_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            44,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        WIP_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            1002,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        WIPBP_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            8,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        PRA_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            15,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        RMA_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            3,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        DORG_RCV,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            42,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               1,
+                                               primary_quantity)))
+                                        MISC_RCV
+                                FROM apps.mtl_material_transactions mmt
+                               WHERE TRUNC (transaction_date) BETWEEN :p_from_date
+                                                                  AND  :p_to_date
+                            GROUP BY organization_id,
+                                     subinventory_code,
+                                     inventory_item_id),
+                     ISSUE
+                        AS (  SELECT organization_id,
+                                     subinventory_code,
+                                     inventory_item_id,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            21,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        ITR_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            63,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        MO_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            101,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        NRG_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            36,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        RTV_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            71,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        PO_CORRCTION_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            105,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        MI2C_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            17,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        WIPCR_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            35,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        WIP_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            1003,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        WIPBR_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            8,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        PRA_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            3,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        DORG_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            32,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        MISC_ISSUE,
+                                     SUM(DECODE (
+                                            transaction_type_id,
+                                            33,
+                                            DECODE (
+                                               SIGN (mmt.transaction_quantity),
+                                               -1,
+                                               primary_quantity)))
+                                        SLS_ISSUE
+                                FROM apps.mtl_material_transactions mmt
+                               WHERE TRUNC (transaction_date) BETWEEN :p_from_date
+                                                                  AND  :p_to_date
+                            GROUP BY organization_id,
+                                     subinventory_code,
+                                     inventory_item_id)
+                SELECT 'OPN' TYP,
+                       ood.operating_unit,
+                       ood.organization_code,
+                       ood.organization_id,
+                       oh.subinventory_code,
+                       msi.inventory_item_id,
+                       msi.concatenated_segments item_code,
+                       msi.description item_description,
+                       msi.primary_uom_code uom,
+                       mic.segment1 AS Item_Catg,
+                       mic.segment2 Item_type,
+                       DECODE (msi.attribute27,
+                               'Foreign', 'Foreign',
+                               'Local')
+                          AS item_Source,
+                       msi.attribute29 movement_status,
+                       NVL (oh.op_qty, 0) OPENING_QTY,
+                       0 ITR_RCV,
+                       0 PO_RECEVING,
+                       0 PO_CORRECTION_RCV,
+                       0 WIP_RETUN,
+                       0 WIP_COMPLETION,
+                       0 WIP_BY_PRODUCT_RCV,
+                       0 PRA_RCV,
+                       0 RMA_RCV,
+                       0 DORG_RCV,
+                       0 MISC_RCV,
+                       0 ITR_ISSUE,
+                       0 MO_ISSUE,
+                       0 NRG_ISSUE,
+                       0 RTV_ISSUE,
+                       0 PO_CORRCTION_ISSUE,
+                       0 MI2C_ISSUE,
+                       0 WIP_COMPLETION_RE_ISSUE,
+                       0 WIP_ISSUE,
+                       0 WIPBR_ISSUE,
+                       0 PRA_ISSUE,
+                       0 DORG_ISSUE,
+                       0 MISC_ISSUE,
+                       0 SLS_ISSUE
+                  FROM ON_HAND oh,              --  RCV r ,        ISSUE  isu,
+                       apps.mtl_system_items_kfv msi,
+                       apps.mtl_item_categories_v mic,
+                       APPS.ORG_ORGANIZATION_DEFINITIONS OOD
+                 WHERE              --oh.organization_id (+)=r.organization_id
+                           --and oh.inventory_item_id (+)= r.inventory_item_id
+                           --and oh.organization_id(+) =isu.organization_id
+                           --and oh.inventory_item_id(+) = isu.inventory_item_id
+                           oh.organization_id = ood.organization_id
+                       AND oh.inventory_item_id(+) = msi.inventory_item_id
+                       AND oh.organization_id(+) = msi.organization_id
+                       AND mic.organization_id = msi.organization_id
+                       AND mic.inventory_item_id = msi.inventory_item_id
+                       --and msi.concatenated_segments='DRCT.H240.0930'
+                       --     AND mic.segment2 = 'HR COIL'
+                       --and oh.organization_id =94--  in (94,95,96,97,98)
+                       AND msi.organization_id NOT IN (90, 91, 685)
+                --group by  mtp.organization_code, msi.concatenated_segments
+                UNION
+                SELECT 'RCV' TYP,
+                       ood.operating_unit,
+                       ood.organization_code,
+                       ood.organization_id,
+                       r.subinventory_code,
+                       msi.inventory_item_id,
+                       msi.concatenated_segments item_code,
+                       msi.description item_description,
+                       msi.primary_uom_code uom,
+                       mic.segment1 AS Item_Catg,
+                       mic.segment2 Item_type,
+                       DECODE (msi.attribute27,
+                               'Foreign', 'Foreign',
+                               'Local')
+                          AS item_Source,
+                       msi.attribute29 movement_status,
+                       0 OPENING_QTY,
+                       NVL (ITR_RCV, 0) ITR_RCV,
+                       NVL (PO_RCV, 0) PO_RECEVING,
+                       NVL (PO_CORRECTION_RCV, 0) PO_CORRECTION_RCV,
+                       NVL (WIPR_RCV, 0) WIP_RETUN,
+                       NVL (WIP_RCV, 0) WIP_COMPLETION,
+                       NVL (WIPBP_RCV, 0) WIP_BY_PRODUCT_RCV,
+                       NVL (PRA_RCV, 0) PRA_RCV,
+                       NVL (RMA_RCV, 0) RMA_RCV,
+                       NVL (DORG_RCV, 0) DORG_RCV,
+                       NVL (MISC_RCV, 0) MISC_RCV,
+                       0 ITR_ISSUE,
+                       0 MO_ISSUE,
+                       0 NRG_ISSUE,
+                       0 RTV_ISSUE,
+                       0 PO_CORRCTION_ISSUE,
+                       0 MI2C_ISSUE,
+                       0 WIP_COMPLETION_RE_ISSUE,
+                       0 WIP_ISSUE,
+                       0 WIPBR_ISSUE,
+                       0 PRA_ISSUE,
+                       0 DORG_ISSUE,
+                       0 MISC_ISSUE,
+                       0 SLS_ISSUE
+                  FROM                                         --ON_HAND  oh ,
+                      RCV r,                                  --   ISSUE  isu,
+                       apps.mtl_system_items_kfv msi,
+                       apps.mtl_item_categories_v mic,
+                       APPS.ORG_ORGANIZATION_DEFINITIONS OOD
+                 WHERE     msi.organization_id = r.organization_id(+)
+                       AND msi.inventory_item_id = r.inventory_item_id(+)
+                       --and oh.organization_id(+) =isu.organization_id
+                       --and oh.inventory_item_id(+) = isu.inventory_item_id
+                       AND msi.organization_id = ood.organization_id
+                       --  and oh.inventory_item_id(+) =msi.inventory_item_id
+                       -- and oh.organization_id(+)=msi.organization_id
+                       AND mic.organization_id = msi.organization_id
+                       AND mic.inventory_item_id = msi.inventory_item_id
+                       -- and msi.concatenated_segments='DRCT.H240.0930'
+                       --AND mic.segment2 = 'HR COIL'
+                       --and oh.organization_id =94--  in (94,95,96,97,98)
+                       AND msi.organization_id NOT IN (90, 91, 685)
+                --group by  mtp.organization_code, msi.concatenated_segments
+                UNION
+                SELECT 'ISU' TYP,
+                       ood.operating_unit,
+                       ood.organization_code,
+                       ood.organization_id,
+                       isu.subinventory_code,
+                       msi.inventory_item_id,
+                       msi.concatenated_segments item_code,
+                       msi.description item_description,
+                       msi.primary_uom_code uom,
+                       mic.segment1 AS Item_Catg,
+                       mic.segment2 Item_type,
+                       DECODE (msi.attribute27,
+                               'Foreign', 'Foreign',
+                               'Local')
+                          AS item_Source,
+                       msi.attribute29 movement_status,
+                       0 OPENING_QTY,
+                       0 ITR_RCV,
+                       0 PO_RECEVING,
+                       0 PO_CORRECTION_RCV,
+                       0 WIP_RETUN,
+                       0 WIP_COMPLETION,
+                       0 WIP_BY_PRODUCT_RCV,
+                       0 PRA_RCV,
+                       0 RMA_RCV,
+                       0 DORG_RCV,
+                       0 MISC_RCV,
+                       NVL (ITR_ISSUE, 0) ITR_ISSUE,
+                       NVL (MO_ISSUE, 0) MO_ISSUE,
+                       NVL (NRG_ISSUE, 0) NRG_ISSUE,
+                       NVL (RTV_ISSUE, 0) RTV_ISSUE,
+                       NVL (PO_CORRCTION_ISSUE, 0) PO_CORRCTION_ISSUE,
+                       NVL (MI2C_ISSUE, 0) MI2C_ISSUE,
+                       NVL (WIPCR_ISSUE, 0) WIP_COMPLETION_RE_ISSUE,
+                       NVL (WIP_ISSUE, 0) WIP_ISSUE,
+                       NVL (WIPBR_ISSUE, 0) WIPBR_ISSUE,
+                       NVL (PRA_ISSUE, 0) PRA_ISSUE,
+                       NVL (DORG_ISSUE, 0) DORG_ISSUE,
+                       NVL (MISC_ISSUE, 0) MISC_ISSUE,
+                       NVL (SLS_ISSUE, 0) SLS_ISSUE
+                  FROM                        --ON_HAND  oh ,      --  RCV r ,
+                      ISSUE isu,
+                       apps.mtl_system_items_kfv msi,
+                       apps.mtl_item_categories_v mic,
+                       APPS.ORG_ORGANIZATION_DEFINITIONS OOD
+                 WHERE              --oh.organization_id (+)=r.organization_id
+                           --and oh.inventory_item_id (+)= r.inventory_item_id
+                           --and oh.organization_id(+) =isu.organization_id
+                           --and oh.inventory_item_id(+) = isu.inventory_item_id
+                           isu.organization_id = ood.organization_id
+                       AND isu.inventory_item_id(+) = msi.inventory_item_id
+                       AND isu.organization_id(+) = msi.organization_id
+                       AND mic.organization_id = msi.organization_id
+                       AND mic.inventory_item_id = msi.inventory_item_id
+                       -- and msi.concatenated_segments='DRCT.H240.0930'
+                       --AND mic.segment2 = 'HR COIL'
+                       AND msi.organization_id NOT IN (90, 91, 685) --  in (94,95,96,97,98)
+                --group by  mtp.organization_code, msi.concatenated_segments
+                ORDER BY 1, 2)) A
+ WHERE 
+    a.OPERATING_UNIT = 84
+    and a.ITEM_CATG  in ('FINISH GOODS')
+--    and a.organization_code in ('SCP')---('CDY','DBR','DMY','DTN','DSY','DRP','DPT')
+--    and a.item_catg in ('INGREDIENT','INDIRECT MATERIAL','LAB AND CHEMICAL','WIP','FINISH GOODS')
+--    and a.item_catg='WIP'
+--    and a.ITEM_TYPE like 'GIFT ITEM%'
+--    and a.inventory_item_id=343390
+    and a.ITEM_CODE in ('RMC0.3000.0005')
+--    and a.organization_id=93
+    and a.subinventory_code is not null
+
+
+
+
+
+select
+    a.*,
+    case when a.qty<0 then apps.fnc_get_item_cost (a.organization_id,a.inventory_item_id, to_char(a.txn_date,'MON-YY')) else apps.fnc_get_item_cost (nvl(a.transfer_organization_id,a.organization_id),a.inventory_item_id,to_char(a.txn_date,'MON-YY')) end ITEM_COST
+from (
+select 
+--    *
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+    msi.description Item_Desc,
+    mic.segment1||'|'||mic.segment2 Item_Category,
+    ood.organization_id,
+    mmt.TRANSFER_ORGANIZATION_ID,
+    ood.ORGANIZATION_CODE,
+--    mmt.SUBINVENTORY_CODE,
+--    gcc.segment1||'.'||gcc.segment2||'.'||gcc.segment3||'.'||gcc.segment4||'.'||gcc.segment5 account,
+    trunc(mmt.transaction_date) Txn_Date,
+    to_char(trunc(mmt.transaction_date),'MON-YY') Txn_Period,    
+--    sum(nvl(mmt.primary_quantity,0)) Qty
+    nvl(mmt.transaction_quantity,0) Qty,
+    mmt.TRANSACTION_COST 
+from 
+    inv.mtl_material_transactions mmt,
+    inv.mtl_system_items_b msi,
+    apps.mtl_item_categories_v mic,
+    apps.org_organization_definitions ood,
+    inv.mtl_transaction_types mtt--,
+--    gl.gl_code_combinations gcc 
+where 
+    ood.SET_OF_BOOKS_ID=2025
+    and msi.organization_id=ood.organization_id
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and msi.organization_id=mmt.organization_id
+    and msi.inventory_item_id=mmt.inventory_item_id
+    and mmt.transaction_type_id=mtt.transaction_type_id
+--    and msi.organization_id=102
+--    and msi.INVENTORY_ITEM_ID=24409
+    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3='CMNT.OBLK.0001'
+--    and mmt.SUBINVENTORY_CODE='CLINKER'
+--    and ood.organization_code='KLG'
+    and mic.segment1='INGREDIENT'
+    and trunc(mmt.transaction_date) between '01-DEC-2014' and '30-DEC-2014'
+group by
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+    msi.description,
+    mic.segment1||'|'||mic.segment2,
+    ood.organization_id,
+    ood.ORGANIZATION_CODE,
+    mmt.TRANSFER_ORGANIZATION_ID,
+--    mmt.SUBINVENTORY_CODE
+--    to_char(trunc(mmt.transaction_date),'MON-YY'),
+    trunc(mmt.transaction_date),
+    mmt.transaction_quantity,
+    mmt.TRANSACTION_COST
+having
+    sum(nvl(mmt.transaction_quantity,0))<>0    
+) a
+
+SELECT * 
+FROM APPS.RCV_VRC_TXS_V
+WHERE TO_ORGANIZATION_ID=100
+
+
+
+
+
+SELECT * 
+--warehouse, do_number, mov_order_no, mov_order_date 
+FROM apps.abc
+WHERE DO_NUMBER= 'DO/SCOU/452583'
+--AND WAREHOUSE = 'Ready Mix Plant Mirpur'
+--AND TRUNC (MOV_ORDER_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+
+select * from apps.akg_employee_details
+where payroll_name='Cement Payroll'
+--and person_type<>'Ex-employee'
+--and SUPERVISOR_ID is not null
+
+
+select* from apps.akg_employee_details
+--where PAYROLL_NAME='Cement - Factory'
+--and PERSON_TYPE='Confirmed'
+--and PERSON_STATUS='Active Assignment'
+WHERE EMPLOYEE_NUMBER='1546'
+
+
+SELECT *
+FROM APPS.RCV_VRC_HDS_V
+WHERE ORGANIZATION_ID = 100
+
+SELECT *
+FROM APPS.MTL_ONHAND_QUANTITIES
+WHERE ORGANIZATION_ID = 100
+--AND SUM* (TRANSACTION_QUANTITY)
+
+
+
+
+
+select * from apps.akg_employee_details
+where EMPLOYEE_NUMBER='8867'
+--where PERSONAL_PHONE = '01712273413'
+--OR PERSON_ID = '2132'
+--where payroll_name='Ready Mix Payroll'
+--and person_type<>'Ex-employee'
+--and SUPERVISOR_ID is not null
+
+
+select *
+from apps.xxakg_dist_cost_cc_amt_recon_v
+
+select * 
+from apps.akg_employee_details
+where PAYROLL_NAME='Memory On Board'
+--and PERSON_TYPE='Confirmed'
+--and PERSON_STATUS='Active Assignment'
+--WHERE EMPLOYEE_NUMBER='11443'
+
+
+select *
+--payroll_name, company
+from apps.akg_employee_details
+
+
+SELECT *
+--GME.*
+FROM apps.GME_BATCH_HEADER GBH
+WHERE ORGANIZATION_ID = 100
+--AND ROWNUM>=100
+--         gme_material_details GMD
+--WHERE GBH.BATCH_ID=GMD.BATCH_ID
+----AND TRUNC(ACTUAL_CMPLT_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+----GROUP BY 
+--AND ROWNUM>=10
+
+SELECT *
+--GME.*
+FROM apps.gme_material_details
+--WHERE ROWNUM>=10
+WHERE ORGANIZATION_ID = 100
+AND TRUNC (CREATION_DATE) BETWEEN '01-JAN-2015' AND '01-JAN-2015'
+
+SELECT *
+--GME.*
+FROM APPS.FM_FORM_MST 
+--GME_BATCH_HEADER
+--WHERE ACTUAL_START_DATE BETWEEN '01-JAN-2015' AND '01-JAN-2015'
+where OWNER_ORGANIZATION_ID = 100
+--ROWNUM <= 10
+--         gme_material_details GMD
+--WHERE GBH.BATCH_ID=GMD.BATCH_ID
+----AND TRUNC(ACTUAL_CMPLT_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+----GROUP BY 
+--AND ROWNUM>=10
+
+
+SELECT *
+FROM APPS.FM_FORM_MST 
+where OWNER_ORGANIZATION_ID = 100
+
+SELECT *
+FROM APPS.gmd_recipes 
+where OWNER_ORGANIZATION_ID = 100
+
+
+SELECT *
+FROM APPS.FM_MATL_DTL
+where ORGANIZATION_ID = 100
+
+
+SELECT *
+FROM APPS.gmd_recipe_process_loss 
+where ORGANIZATION_ID = 100
+
+
+SELECT MSI.SEGMENT1||'.'||MSI.SEGMENT2||'.'||MSI.SEGMENT3 ITEM_CODE, MSI.DESCRIPTION, MC.SEGMENT1||'|'||MC.SEGMENT2 ITEM_CATEGORY, MIC.ORGANIZATION_ID
+FROM APPS.MTL_SYSTEM_ITEMS_B MSI,
+          APPS.MTL_ITEM_CATEGORIES MIC,
+          APPS.MTL_CATEGORIES_B MC
+WHERE MSI.ORGANIZATION_ID=MIC.ORGANIZATION_ID
+AND     MSI.INVENTORY_ITEM_ID=MIC.INVENTORY_ITEM_ID
+AND     MIC.CATEGORY_ID=MC.CATEGORY_ID
+AND     MIC.ORGANIZATION_ID= 99
+
+
+
+
+
+
+SELECT *
+FROM  APPS.FM_FORM_MST 
+WHERE OWNER_ORGANIZATION_ID = 100
+
+SELECT *
+FROM  APPS.gmd_recipes
+WHERE OWNER_ORGANIZATION_ID = 100
+
+
+
+
+
+
+
+select
+    a.*,
+    case when a.qty<0 then apps.fnc_get_item_cost (a.organization_id,a.inventory_item_id,to_char(a.txn_date,'MON-YY')) else apps.fnc_get_item_cost (nvl(a.transfer_organization_id,a.organization_id),a.inventory_item_id,to_char(a.txn_date,'MON-YY')) end ITEM_COST
+from (
+select 
+--    *
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+    msi.description Item_Desc,
+    mic.segment1||'|'||mic.segment2 Item_Category,
+    ood.organization_id,
+    mmt.TRANSFER_ORGANIZATION_ID,
+    ood.ORGANIZATION_CODE,
+--    mmt.SUBINVENTORY_CODE,
+--    gcc.segment1||'.'||gcc.segment2||'.'||gcc.segment3||'.'||gcc.segment4||'.'||gcc.segment5 account,
+    trunc(mmt.transaction_date) Txn_Date,
+    to_char(trunc(mmt.transaction_date),'MON-YY') Txn_Period,    
+--    sum(nvl(mmt.primary_quantity,0)) Qty
+    nvl(mmt.transaction_quantity,0) Qty,
+    mmt.TRANSACTION_COST 
+from 
+    inv.mtl_material_transactions mmt,
+    inv.mtl_system_items_b msi,
+    apps.mtl_item_categories_v mic,
+    apps.org_organization_definitions ood,
+    inv.mtl_transaction_types mtt--,
+--    gl.gl_code_combinations gcc 
+where 
+    ood.SET_OF_BOOKS_ID=2025
+    and msi.organization_id=ood.organization_id
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and msi.organization_id=mmt.organization_id
+    and msi.inventory_item_id=mmt.inventory_item_id
+    and mmt.transaction_type_id=mtt.transaction_type_id
+--    and msi.organization_id=102
+--    and msi.INVENTORY_ITEM_ID=24409
+    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3='CMNT.SBLK.0001'
+--    and mmt.SUBINVENTORY_CODE='CLINKER'
+--    and ood.organization_code='KLG'
+    and mic.segment1='INGREDIENT'
+    and trunc(mmt.transaction_date) between '01-JAN-2015' and '31-JAN-2015'
+group by
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+    msi.description,
+    mic.segment1||'|'||mic.segment2,
+    ood.organization_id,
+    ood.ORGANIZATION_CODE,
+    mmt.TRANSFER_ORGANIZATION_ID,
+--    mmt.SUBINVENTORY_CODE
+--    to_char(trunc(mmt.transaction_date),'MON-YY'),
+    trunc(mmt.transaction_date),
+    mmt.transaction_quantity,
+    mmt.TRANSACTION_COST
+having
+    sum(nvl(mmt.transaction_quantity,0))<>0    
+) a
+
+
+select * from apps.xxakg_trip_cost
+where FROM_WAREHOUSE_ID = 'Mirpur Ready Mix'
+--org_organization_definetion
+
+SELECT MSI.SEGMENT1||'.'||MSI.SEGMENT2||'.'||MSI.SEGMENT3 ITEM_CODE, MSI.DESCRIPTION,MOQ.*, MOQ.TRANSACTION_QUANTITY, MC.SEGMENT1||'|'||MC.SEGMENT2 ITEM_CATEGORY, MIC.ORGANIZATION_ID
+FROM APPS.MTL_SYSTEM_ITEMS_B MSI,
+          APPS.MTL_ONHAND_QUANTITIES MOQ,
+          APPS.MTL_ITEM_CATEGORIES MIC,
+          APPS.MTL_CATEGORIES_B MC
+WHERE MSI.ORGANIZATION_ID=MIC.ORGANIZATION_ID
+AND     MSI.INVENTORY_ITEM_ID=MIC.INVENTORY_ITEM_ID
+AND     MSI.INVENTORY_ITEM_ID=MOQ.INVENTORY_ITEM_ID
+AND     MIC.CATEGORY_ID=MC.CATEGORY_ID
+AND     MIC.ORGANIZATION_ID=99
+AND     MC.SEGMENT2 = 'FINISH GOODS'
+AND     MC.SEGMENT2 LIKE 'PD%'
+
+
+
+
+
+
+select * from (
+/* Formatted on 11/17/2013 6:09:49 PM (QP5 v5.136.908.31019) */
+/*  Batch Detail*/
+  SELECT rt.routing_no,
+         a.organization_id,
+         ood.organization_code,
+         a.batch_no,
+         a.actual_start_date,
+         TO_CHAR (a.actual_start_date, 'MON-YY') Period,
+         TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS') AS Production_Date,
+         TO_CHAR (TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS'), 'MON-YY')
+            AS Production_PERIOD,
+         DECODE (a.batch_status,
+                 1, 'Pending',
+                 2, 'WIP',
+                 3, 'Completed',
+                 4, 'Closed',
+                 -1, 'Cancelled',
+                 'Others')
+            AS Batch_status,
+         a.batch_close_date,
+         a.actual_cmplt_date,
+         SUM (DECODE (b.line_type, -1, b.actual_qty)) AS ING,
+         SUM (DECODE (b.line_type, 1, b.actual_qty)) AS Prod,
+         SUM (DECODE (b.line_type, 2, b.actual_qty)) AS BY_prod
+    FROM apps.gme_batch_header a,
+         apps.gme_material_details b,
+         apps.org_organization_definitions ood,
+         apps.gmd_routings_b rt
+   WHERE   
+        a.organization_id = 100
+         AND ood.legal_entity=23279
+         AND a.batch_id = b.batch_id
+         AND a.organization_id = b.organization_id
+         AND a.organization_id = ood.organization_id
+         AND a.routing_id = rt.routing_id
+--         and a.batch_no in (19931)
+--         and rt.routing_no='CAST PIECE FORMATION'
+--         and to_char(trunc(TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS')),'MON-YY') ='JUL-14'
+         and trunc(TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS')) between '01-FEB-2015' and '28-FEB-2015'
+GROUP BY a.organization_id,
+         ood.organization_code,
+         a.batch_no,
+         a.attribute4,
+         a.actual_start_date,
+         a.batch_status,
+         a.actual_cmplt_date,
+         rt.routing_no,
+         a.BATCH_CLOSE_DATE
+ORDER BY 4
+ )
+ where
+    BATCH_STATUS<>'Cancelled'
+--    and (ING=0 or PROD=0)
+
+
+SELECT 
+    A.ORGANIZATION, 
+    A.LEGAL_ENTITY, 
+    A.DIVISION,
+    A.EMPLOYEE_NUMBER,
+    A.FULL_NAME,
+    A.DEPARTMENT,
+    A.SUBDEPARTMENT,
+    A.DESIGNATION,
+    A.EMPLOYMENT_CATEGORY,
+    l.DATE_START,
+    l.DATE_END,
+    l.C_TYPE_DESC,
+    l.CATEGORY_MEANING,
+    l.ABSENCE_DAYS
+FROM 
+    apps.akg_employee_details A,
+    apps.xxakg_leave_balance l
+WHERE 
+    A.PERSON_ID=l.PERSON_ID
+AND A.EMPLOYEE_NUMBER='8867'
+ --AND A.ORGANIZATION in ('AKCL','SCIL','SPL')
+AND TRUNC (l.DATE_START) BETWEEN '01-JAN-2015' AND '31-DEC-2015'
+--AND A.DIVISION='Cement Division'
+
+
+
+
+
+
+SELECT * 
+FROM apps.xxakg_biee_cem_modetail
+WHERE organization_id=99
+AND trunc(TRANSACTION_DATE) BETWEEN '01-JUL-2014' AND '31-JUL-2014'
+--AND USE_OF_AREA = 'STORE'
+AND CREATED_BY= '2767'
+
+SELECT * FROM APPS.XXAKG_PURCHASE_TO_PAYMENT_MV
+where org_id=84
+AND TRUNC(APPROVED_DATE) BETWEEN '01-JAN-2015' AND '31-JAN-2015'
+
+select ood.organization_id, ood.organization_code
+from APPS.ORG_ORGANIZATION_DEFINITIONS ood, inv.mtl_parameters mp 
+where mp.organization_id=ood.organization_id
+and mp.process_enabled_flag= 'Y'
+and ood.legal_entity=23279
+
+
+select * from apps.ORG_ACCT_PERIODS_V
+
+SELECT ORGANIZATION_ID, STATUS, PERIOD_NAME, PERIOD_NUMBER
+FROM APPS.ORG_ACCT_PERIODS_V
+WHERE PERIOD_YEAR = 2015
+
+
+
+
+SELECT ood.organization_id, ood.organization_code
+FROM APPS.ORG_ORGANIZATION_DEFINITIONS ood, inv.mtl_parameters mp 
+WHERE mp.organization_id=ood.organization_id
+AND mp.process_enabled_flag= 'Y'
+AND ood.legal_entity=23279
+
+SELECT mp.*
+FROM APPS.ORG_ORGANIZATION_DEFINITIONS ood, inv.mtl_parameters mp 
+WHERE mp.organization_id=ood.organization_id
+AND mp.process_enabled_flag= 'Y'
+AND ood.legal_entity=23279
+
+
+
+
+

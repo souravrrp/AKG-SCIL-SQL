@@ -1,0 +1,150 @@
+SELECT 
+--    a.*, b.*
+    c.FLOW_STATUS_CODE, 
+    c.BOOKED_DATE, 
+    d.ORDERED_ITEM, 
+    d.SHIPMENT_PRIORITY_CODE,
+    d.SCHEDULE_SHIP_DATE, 
+    d.SHIP_FROM_ORG_ID,
+    d.ATTRIBUTE3,
+    d.TAX_DATE,
+    d.SHIPMENT_NUMBER,
+    d.INVOICED_QUANTITY,
+    c.FLOW_STATUS_CODE,
+    d.SHIPPED_QUANTITY,
+    d.UNIT_COST,
+    a.WAREHOUSE_ORG_CODE,
+    a.MOV_ORD_HDR_ID,
+    a.MOV_ORDER_STATUS,
+    a.MOV_ORDER_NO,
+    b.DO_NUMBER,
+    b.CUSTOMER_NUMBER,
+    a.FINAL_DESTINATION,
+    a.VEHICLE_NO,
+    a.KM_PER_LITRE,
+    a.CREATION_DATE,
+    a.CONFIRMED_DATE,
+    b.VAT_CHALLAN_NO,
+    b.CONFIRM_DATE,
+    b.CREATION_DATE
+FROM 
+    apps.oe_order_headers_all c,
+    apps.oe_order_lines_all d,
+    xxakg.xxakg_mov_ord_hdr a,
+    xxakg.xxakg_mov_ord_dtl b
+WHERE
+    c.header_id=d.header_id
+    a.MOV_ORD_HDR_ID=b.MOV_ORD_HDR_ID
+    c.org_id=b.org_id
+--    AND c.org_id=84
+    AND d.SHIP_FROM_ORG_ID = 201
+    AND d.SHIPMENT_PRIORITY_CODE = 'DO/RMCOU/94299'
+--    AND c.FLOW_STATUS_CODE = 'CLOSED'
+--    AND trunc(d.ACTUAL_SHIPMENT_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+
+
+select * from apps.oe_order_headers_all 
+where SHIP_FROM_ORG_ID=201
+and trunc(CREATION_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+and rownum <10
+
+select * from apps.oe_order_lines_all 
+where SHIP_FROM_ORG_ID=201
+and trunc(ACTUAL_SHIPMENT_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+and rownum <10
+
+
+SELECT 
+    oha.order_number, 
+    ola.line_number so_line_number,
+    oha.FLOW_STATUS_CODE, 
+    oha.BOOKED_DATE, 
+    ola.ORDERED_ITEM, 
+    ola.SCHEDULE_SHIP_DATE, 
+    ola.PRICING_QUANTITY, 
+    ola.PRICING_QUANTITY_UOM, 
+    ola.SHIPPING_QUANTITY2, 
+    oha.SHIP_FROM_ORG_ID,
+    ola.TAX_DATE,
+    ola.SHIPMENT_NUMBER,
+    oha.SHIPMENT_PRIORITY_CODE,
+    oha.ATTRIBUTE3,
+    ola.INVOICED_QUANTITY,
+    ola.FLOW_STATUS_CODE,
+    ola.SHIPPED_QUANTITY,
+    ola.UNIT_COST,
+    ola.ordered_item item_name,
+    ola.ordered_quantity * ola.unit_selling_price LINE_AMOUNT,
+    rcta.trx_number Transaction_number, rcta.trx_date,
+    rctla.line_number TRX_line_number,
+    rctla.unit_selling_price unit_selling_price
+FROM 
+    apps.oe_order_headers_all oha,
+    apps.oe_order_lines_all ola,
+    apps.ra_customer_trx_all rcta,
+    apps.ra_customer_trx_lines_all rctla
+WHERE 
+    oha.header_id = ola.header_id
+    AND rcta.customer_trx_id = rctla.customer_trx_id
+    AND rctla.interface_line_attribute6 = TO_CHAR (ola.line_id)
+    AND rctla.interface_line_attribute1 = TO_CHAR (oha.order_number)
+    AND oha.org_id=84
+    AND trunc(ola.ACTUAL_SHIPMENT_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+--    AND ola.ordered_item <> 'RMC0.SERV.0001'
+--   AND order_number = :p_order_number
+
+
+select 
+--    a.*,b.*
+    a.WAREHOUSE_ORG_CODE,
+    a.MOV_ORD_HDR_ID,
+    a.MOV_ORDER_STATUS,
+    a.MOV_ORDER_NO,
+    b.DO_NUMBER,
+    b.CUSTOMER_NUMBER,
+    a.FINAL_DESTINATION,
+    a.VEHICLE_NO,
+    a.KM_PER_LITRE,
+    a.CREATION_DATE,
+    a.CONFIRMED_DATE,
+    b.VAT_CHALLAN_NO,
+    b.CONFIRM_DATE,
+    b.CREATION_DATE
+from 
+    xxakg.xxakg_mov_ord_hdr a,
+    xxakg.xxakg_mov_ord_dtl b
+--where
+where 
+    a.MOV_ORD_HDR_ID=b.MOV_ORD_HDR_ID
+    and a.WAREHOUSE_ORG_ID=201
+--    and trunc(a.MOV_ORDER_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+--    and b.DO_NUMBER = 'DO/RMCOU/94299'
+and 
+rownum <10
+
+select * from xxakg.xxakg_mov_ord_hdr
+--where
+where WAREHOUSE_ORG_ID=201
+and 
+trunc(CREATION_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+and 
+rownum <10
+
+select *
+--    b.*
+--    b.DO_NUMBER,
+--    b.CUSTOMER_NUMBER,
+--    b.VAT_CHALLAN_NO
+from 
+--    xxakg.xxakg_mov_ord_hdr a,
+    xxakg.xxakg_mov_ord_dtl 
+--where
+where 
+--    a.MOV_ORD_HDR_ID=b.MOV_ORD_HDR_ID
+--    and a.WAREHOUSE_ORG_ID=201
+--    and trunc(a.MOV_ORDER_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+    trunc(CONFIRM_DATE) between  '01-JUL-2016' and '20-JUL-2016'
+--    and b.
+--    DO_NUMBER = 'DO/RMCOU/94299'
+and 
+rownum <10

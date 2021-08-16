@@ -1,0 +1,320 @@
+﻿begindelays
+DataDelay=0
+CellDelay=0.2
+FormDelay=0.25
+KeyHold=50
+SystemHold=50
+HourGlass=250
+TAB=0
+ENT=0
+*UP=0
+*DN=0
+*LT=0
+*RT=0
+*SP=0
+*SAVE=0
+*NB=0
+*PB=0
+*NF=0
+*PF=0
+*NR=0
+*PR=0
+*FR=0
+*LR=0
+*ER=0
+*DR=0
+*SB=0
+*ST=0
+*BM=0
+*QE=0
+*QR=0
+*FI=0
+*FA=0
+*IR=0
+*CL=0
+*FE=0
+*AA=0
+*AB=0
+*AC=0
+*AD=0
+*AE=0
+*AF=0
+*AG=0
+*AH=0
+*AI=0
+*AJ=0
+*AK=0
+*AL=0
+*AM=0
+*AN=0
+*AO=1
+*AP=0
+*AQ=0
+*AR=0
+*AS=0
+*AT=0
+*AU=0
+*AV=0
+*AW=0
+*AX=0
+*AY=0
+*AZ=0
+enddelays
+beginheader
+Data	TAB	Data	TAB	TAB	Data	TAB	TAB	TAB	TAB	TAB	TAB	Data	TAB	Data	Key Strokes	*DN	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data	Data																																																																																																				
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+endheader
+beginother
+Window=Oracle Applications - DM1
+Description=
+CommandGroup=EBS - R12
+PasteCtrlV=1
+endother
+begindata
+PRD:CER	TAB	UWCA.IMMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWCA.VNDS.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWCB.VRNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UWCB.VRNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UWCB.VRRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWCB.VRNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWCB.VNDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWCA.MRNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWCB.MRNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWCB.MRDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWCB.MPNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWCB.MPNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWCA.VINI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	10	\^S	*DN																	
+PRD:CER	TAB	UWCB.VINI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWCA.ISNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWCB.ISNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWCB.STNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWTA.IMRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWTB.IMNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWTB.IMRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWTB.IMNG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWTB.VRNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	12	\^S	*DN																	
+PRD:CER	TAB	UWTA.MRMG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	11	\^S	*DN																	
+PRD:CER	TAB	UWTB.MRNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	23	\^S	*DN																	
+PRD:CER	TAB	UWTB.MRNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UWTB.MRRR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWTB.MRNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWTA.VINW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWTA.VINI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.AGRR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UWBB.AGNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBB.AGNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.ELNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.ELDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.VBNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	15	\^S	*DN																	
+PRD:CER	TAB	UWBA.VBRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UWBA.VBNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	7	\^S	*DN																	
+PRD:CER	TAB	UWBA.VBDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBA.VBNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.VBNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.VBNG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.VBNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.VBNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.CNDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.CNNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.CNNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWBB.CNNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.SLDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.SLMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBA.SLMB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBA.SLMG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWBB.SLRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UWBB.SLNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.SLNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.SLNE.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.SLMB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.OVDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.OVMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.OVRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBB.OVDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UWBB.OVNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.MRNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWBA.MRNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	11	\^S	*DN																	
+PRD:CER	TAB	UWBA.MRRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.MRNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWBA.MRMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBB.MRNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.MRNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.MRNG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.MRMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBA.MANR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UWBA.MAND.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.MANG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.VINW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.VINI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.ISNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	7	\^S	*DN																	
+PRD:CER	TAB	UWBA.ISNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	16	\^S	*DN																	
+PRD:CER	TAB	UWBA.ISRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UWBB.ISNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UWBB.ISNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.ISND.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UWBB.ISMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBA.ISNW.0002	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UWBA.ISNI.0002	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	12	\^S	*DN																	
+PRD:CER	TAB	UWBA.OCNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.OCNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.LCNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UWBA.OCNW.0002	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.OCNW.0002	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UWBB.OCNI.0002	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UPDA.UNNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	122	\^S	*DN																	
+PRD:CER	TAB	UPDA.UNRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	35	\^S	*DN																	
+PRD:CER	TAB	UPDB.UNNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UPDB.UNNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	12	\^S	*DN																	
+PRD:CER	TAB	UPDB.UNRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.UNNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.UNDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.SLDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDA.SLNF.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	17	\^S	*DN																	
+PRD:CER	TAB	UPDA.SLMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	7	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	11	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	19	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLNY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDB.SLNF.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDA.VRRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	78	\^S	*DN																	
+PRD:CER	TAB	UPDA.VRNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	6	\^S	*DN																	
+PRD:CER	TAB	UPDA.VRDB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UPDA.VRMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.VRNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UPDB.VRNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UPDB.VRRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.VRNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	7	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	24	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	31	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVNB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVNR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	5	\^S	*DN																	
+PRD:CER	TAB	UPDA.OVMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	4	\^S	*DN																	
+PRD:CER	TAB	UPDB.OVNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDB.OVRP.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.SONR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.SOMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	3	\^S	*DN																	
+PRD:CER	TAB	UPDB.SOMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDA.ISNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UPDA.ISNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	27	\^S	*DN																	
+PRD:CER	TAB	UPDB.ISNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UPDB.ISNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UPDB.ISMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UAPA.LONB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UAPA.LOMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	11	\^S	*DN																	
+PRD:CER	TAB	UAPB.LONB.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	2	\^S	*DN																	
+PRD:CER	TAB	UAPB.LONY.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UAPA.LINW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	67	\^S	*DN																	
+PRD:CER	TAB	UAPA.LINI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	90	\^S	*DN																	
+PRD:CER	TAB	UAPA.LIMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UAPB.LIMR.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UAPA.ORNW.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	168	\^S	*DN																	
+PRD:CER	TAB	UAPA.ORNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	150	\^S	*DN																	
+PRD:CER	TAB	UAPA.ORNG.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UAPB.ORNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	9	\^S	*DN																	
+PRD:CER	TAB	UAPB.ORMI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+PRD:CER	TAB	UURB.ALNI.0001	TAB	TAB	Planned order	TAB	TAB	TAB	TAB	TAB	TAB	25-FEB-2017	TAB	1	\^S	*DN																	
+enddata
+beginoptions
+AutoTab=false
+HourGlass=false
+AutoInsert=true
+ProgressBar=true
+TitleSize=false
+DataColour=16777215
+CommandColour=16777215
+KeystrokeColour=16777215
+DataSource=0
+ImportLoad=0
+EnableMacro=1
+DatePicker=1
+LegacyKeyMode=0
+IEOnly=0
+StopIfNotIE=0
+LoadControl=0
+UseBC=0
+SkipBlank=1
+Protection=￶�￶�￮￥￮￥￦￭￦￭￮￥￮￥￶�￶�ￎￅￎￅￆￍￆￍￎￅￎￅ￶�￶�￮￥￮￥￦￭￦￭￮￥￮￥￶�￶�%CR%%CR%v}v}nenefmfmnenev}v}NE
+endoptions
+beginformat
+FontName=Default
+FontSize=8
+ColumnWidth3=117
+ColumnWidth17=88
+ColumnWidth18=88
+ColumnWidth34=88
+endformat
+begincommands
+Command	EBS - R12	EBS - 11i	EBS - 10.7/11.0 NCA	EBS - 10.7SC	Siebel	SAP	Peoplesoft	JDE	Dynamics	Other	Description
+TAB	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	\{TAB}	TAB key
+ENT	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	\{ENTER}	Enter key
+*UP	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	\{UP}	Up arrow key
+*DN	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	\{DOWN}	Down arrow key
+*LT	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	\{LEFT}	Left arrow key
+*RT	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	\{RIGHT}	Right arrow key
+*SP	\%F%V	\%F%V	\%A%{DOWN 4}{ENTER}	\%A%A							Save & proceed
+*SAVE	\^S	\^S	\^S	\{F10}							Save
+*NB	\+{PGDN}	\+{PGDN}	\+{PGDN}	\^{PGDN}							Next Block
+*PB	\+{PGUP}	\+{PGUP}	\+{PGUP}	\^{PGUP}							Previous Block
+*NF	\{TAB}	\{TAB}	\%G%{DOWN}{ENTER}	\{TAB}							Next Field
+*PF	\+{TAB}	\+{TAB}	\%G%{DOWN 2}{ENTER}	\+{TAB}							Previous Field
+*NR	\{DOWN}	\{DOWN}	\%G%{DOWN 3}{ENTER}	\+{DOWN}							Next record
+*PR	\{UP}	\{UP}	\%G%{DOWN 4}{ENTER}	\+{UP}							Previous record
+*FR	\%V%DF	\%V%DF	\%G%{DOWN 5}{ENTER}	\%G%F							First record
+*LR	\%V%DL	\%V%DL	\%G%{DOWN 6}{ENTER}	\%G%L							Last record
+*ER	\{F6}	\{F6}	\{F6}	\+{F4}							Erase record
+*DR	\^{UP}	\^{UP}	\^{UP}	\+{F6}							Delete record
+*SB	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	\ 	Space bar
+*ST	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	\{HOME}+{END}	Select field text
+*BM	\^B	\^B	\^B	\{F5}							Block menu
+*QE	\{F11}	\{F11}	\{F11}	\{F7}							Query enter
+*QR	\^{F11}	\^{F11}	\^{F11}	\{F8}							Query run
+*FI	\%V%F	\%V%F	\%Q%{DOWN}{ENTER}								Find
+*FA	\%V%I	\%V%I	\%Q%{DOWN 2}{ENTER}								Find all
+*IR	\^{DOWN}	\^{DOWN}	\^{DOWN}	\{F6}							Insert record
+*CL	\{F5}	\{F5}	\{F5}	\^U							Clear field
+*FE	\^E	\^E	\^E	\^E							Field edit
+*AA	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	\%A	Alt A
+*AB	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	\%B	Alt B
+*AC	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	\%C	Alt C
+*AD	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	\%D	Alt D
+*AE	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	\%E	Alt E
+*AF	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	\%F	Alt F
+*AG	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	\%G	Alt G
+*AH	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	\%H	Alt H
+*AI	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	\%I	Alt I
+*AJ	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	\%J	Alt J
+*AK	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	\%K	Alt K
+*AL	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	\%L	Alt L
+*AM	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	\%M	Alt M
+*AN	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	\%N	Alt N
+*AO	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	\%O	Alt O
+*AP	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	\%P	Alt P
+*AQ	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	\%Q	Alt Q
+*AR	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	\%R	Alt R
+*AS	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	\%S	Alt S
+*AT	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	\%T	Alt T
+*AU	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	\%U	Alt U
+*AV	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	\%V	Alt V
+*AW	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	\%W	Alt W
+*AX	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	\%X	Alt X
+*AY	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	\%Y	Alt Y
+*AZ	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	\%Z	Alt Z
+endcommands
+beginhdrgrid
+																																																																																																			
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+begindata
+enddata
+endhdrgrid
+beginftrgrid
+																																																																																																		
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+begindata
+enddata
+endftrgrid

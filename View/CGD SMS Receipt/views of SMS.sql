@@ -1,0 +1,5 @@
+1.	CGD_DELIVERY_SMS ? XXAKG_CGD_DELIVERY_SMS
+2.	CGD_ORDER_SMS ? XXAKG_ CGD_ORDER_SMS
+3.	XXAKG_AR_RECEIPT_SMS  ? we have already migrated in PROD
+4.	 XXAKG_AR_CUSTOMER_CGD_SMS ? we have already migrated in PROD
+

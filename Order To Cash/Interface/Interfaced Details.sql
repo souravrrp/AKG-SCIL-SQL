@@ -1,0 +1,64 @@
+SELECT
+*
+FROM
+APPS.RA_INTERFACE_LINES_ALL
+--joind_by interface_line_id, customer_type_trx_id, customer_trx_id, sales_order, inventory_item_id, 
+--conditioned_by batch_source_name/sales_orer_source, trx_date, gl_date, ship_date_actual, sales_order_date, 
+--find out description, amount, quantity_ordered, unit_selling_price, uom_code, org_id, warehouse_id,  
+WHERE 1=1
+--and SALES_ORDER=:P_SALES_ORDER
+AND ORG_ID=85
+--and interface_line_id=13524531
+
+
+
+SELECT
+*
+FROM
+APPS.RA_INTERFACE_DISTRIBUTIONS_ALL
+WHERE 1=1
+--AND ORG_ID=82
+
+
+SELECT
+*
+FROM
+APPS.RA_INTERFACE_ERRORS_ALL  
+
+
+SELECT
+*
+FROM
+APPS.RA_INTERFACE_SALESCREDITS_ALL 
+WHERE 1=1
+AND ORG_ID=85
+AND INTERFACE_LINE_ATTRIBUTE10=117
+--and INTERFACE_LINE_ATTRIBUTE1=1644955
+
+
+--------------------------------------------------------------------------------
+
+SELECT
+*
+FROM
+APPS.RA_CUSTOMERS_INTERFACE_ALL
+WHERE 1=1
+
+
+
+------------------------------INVENTORY TRANSACTION INTERFACE-------------------
+
+SELECT
+*
+FROM
+APPS.MTL_TRANSACTION_LOTS_INTERFACE
+
+SELECT
+*
+FROM
+APPS.MTL_TRANSACTIONS_INTERFACE
+WHERE 1=1
+--JOINED_BY TRANSACTION_INTERFACE_ID, TRANSACTION_HEADER_IID, SOURCE_HEADER_ID, SOURCE_LINE_ID, 
+--CONDITIONED BY INVENTORY_ITEM_ID, ORGANIZATION_ID, 
+--FIND_OUT TRANSACTION_QUANTITY, PRIMARY_QUANTITY, TRANSACTION_UOM, TRASACTION_DATE, SUBINVENTORY_CODE, TRANSFER_SUBINVENTORY, TRANSFER_ORGANIZATION
+--SHIPMENT_NUMBER(TO), ATTRIBUTE3(MTO)

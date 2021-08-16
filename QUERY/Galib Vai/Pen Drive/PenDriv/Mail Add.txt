@@ -1,0 +1,76 @@
+Imrul Hasan; 
+shafeen@abulkhairgroup.com; 
+joarder@abulkhairgroup.com; 
+abukawsar@abulkhairgroup.com; 
+mustafizur@abulkhairgroup.com; 
+g.mostafa@abulkhairgroup.com; 
+seraji@abulkhairgroup.com; 
+'Abdul Halim'; 
+afakcil@abulkhairgroup.com; 
+'Md.Abdul Wahab'; 
+ramesh@abulkhairgroup.com; 
+'Md. Jahirul Alam'; 
+'Monir Hossen'; 
+quddus@abulkhairgroup.com; 
+'Samad AKCL (Truck)'; 
+akcl.store.incharge@abulkhairgroup.com; 
+kamrulhasan@abulkhairgroup.com 
+fkc@abulkhairgroup.com; 
+'Mohiuddin Mahmud Director AKG'; 
+asif.iqbal@abulkhairgroup.com; 
+mobasserin@abulkhairgroup.com; 
+zakerkiron@abulkhairgroup.com; 
+rajib.biswas@abulkhairgroup.com; 
+shazzad@abulkhairgroup.com; 
+safat@abulkhairgroup.com; 
+jamal@abulkhairgroup.com; 
+mehedi.hasan@abulkhairgroup.com; 
+'arif it'; 
+'Rokan'; '
+Sazzad - CGD Factory-IT'; 
+cfit@abulkhairgroup.com; 
+'Sabrina Akter'
+
+https://erecruitment.bb.org.bd/onlineapp/joblist.php
+
+
+
+SELECT   a.organization_id,a.batch_no, a.batch_id,a.batch_status,sum(nvl(COST_ALLOC,0))
+    FROM apps.gme_batch_header a,
+         apps.gme_material_details b,
+         apps.org_organization_definitions ood,
+         apps.gmd_routings_b rt
+   WHERE     a.organization_id in (99,100,101,113,201,365,444,606)--= 606
+         AND a.batch_id = b.batch_id
+         AND a.organization_id = b.organization_id
+         AND a.organization_id = ood.organization_id
+         AND a.routing_id = rt.routing_id 
+       and TO_CHAR (TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS'), 'MON-YY')='DEC-13'
+       and a.batch_status<>-1
+--       and a.batch_id=485642
+    and a.batch_no=5488
+GROUP BY         a.organization_id,a.batch_no,a.batch_id,a.batch_status
+--having round(1-sum(nvl(COST_ALLOC,0)),3)<>0
+
+
+
+select prha.*,prla.*
+-- prha.segment1 requisition_number ,
+-- prha.creation_date , 
+-- prha.authorization_status Requisition_status,
+-- prha.org_id,
+-- prla.item_id,
+-- item_description
+ from 
+ apps.po_requisition_headers_all prha,
+ apps.po_requisition_lines_all prla
+where prha.requisition_header_id=prla.requisition_header_id
+and prha.org_id=prla.org_id
+and TRUNC (TO_DATE (prha.CREATION_DATE,  'RRRR/MM/DD HH24:MI:SS')) BETWEEN '01-JAN-2016' AND '30-JUL-2016'
+and DESTINATION_ORGANIZATION_ID = 101
+--and prha.segment1='120114459'
+--and prha.org_id=85
+
+--AND TRUNC (TO_DATE (a.attribute4, 'RRRR/MM/DD HH24:MI:SS')) BETWEEN '01-JUL-2016' AND '30-JUL-2016'
+
+

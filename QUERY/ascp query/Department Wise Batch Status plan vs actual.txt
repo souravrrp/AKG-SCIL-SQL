@@ -1,0 +1,30 @@
+SELECT 
+gbh.batch_no,grb.routing_no, 
+msi.segment1 || '.' || msi.segment2 || '.' || msi.segment3 Item,
+       gmd.SUBINVENTORY,
+--       msi.LOT_CONTROL_CODE, 
+       --moqd.LOT_NUMBER,
+       gmd.DTL_UM, gmd.PLAN_QTY, gmd.ACTUAL_QTY, msi.primary_uom_code
+  FROM GME.GME_BATCH_HEADER gbh,
+       gme.gme_material_details gmd,
+       inv.mtl_system_items_b msi,
+       gmd.gmd_routings_b grb
+WHERE     gmd.organization_id = 99
+--       AND gmd.line_type = 1 and gbh.batch_status>=2
+       AND gmd.organization_id = msi.organization_id
+       AND gmd.inventory_item_id = msi.inventory_item_id
+       AND gbh.organization_id = msi.organization_id
+       AND gbh.batch_id = GMD.batch_id
+      AND TO_CHAR (gbh.actual_start_date, 'DD-MON-YYYY') = '18-JUL-2016'
+       and gbh.routing_id=grb.routing_id
+--       and gbh.batch_no='82165'   
+--and msi.segment1 like 'FP%'
+and grb.routing_no ='CAST'
+--and msi.segment1 || '.' || msi.segment2 || '.' || msi.segment3 in ('CPAP.LOTS.0001')
+group by gbh.batch_no,grb.routing_no,msi.segment1 || '.' || msi.segment2 || '.' || msi.segment3,
+       gmd.SUBINVENTORY,
+--       msi.LOT_CONTROL_CODE, 
+       gmd.DTL_UM,
+       --moqd.LOT_NUMBER,
+       msi.primary_uom_code,gmd.PLAN_QTY, gmd.ACTUAL_QTY
+--having  nvl(gmd.PLAN_QTY,0)> nvl(gmd.ACTUAL_QTY,0)

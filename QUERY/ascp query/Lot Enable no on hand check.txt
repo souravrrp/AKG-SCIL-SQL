@@ -1,0 +1,9 @@
+select distinct  msi.segment1||'.'||msi.segment2||'.'||msi.segment3, gmd.SUBINVENTORY, msi.LOT_CONTROL_CODE
+ from GME.GME_BATCH_HEADER gbh, gme.gme_material_details gmd,inv.mtl_system_items_b msi
+where gmd.organization_id=99 and gmd.line_type=-1
+and gmd.organization_id=msi.organization_id and gmd.inventory_item_id=msi.inventory_item_id
+and gbh.organization_id=msi.organization_id and gbh.batch_id=GMD.batch_id
+and to_char(gbh.actual_start_date,'DD-MON-YYYY')='08-JUN-2016'
+and not exists(
+    select 1 from inv. mtl_onhand_quantities_detail moqd where moqd.inventory_item_id=msi.inventory_item_id  
+    and moqd.organization_id=msi.organization_id and gmd.SUBINVENTORY=moqd.SUBINVENTORY_code)

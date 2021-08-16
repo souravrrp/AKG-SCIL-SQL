@@ -1,0 +1,54 @@
+/* Formatted on 10/16/2019 10:44:23 AM (QP5 v5.287) */
+CREATE OR REPLACE FORCE VIEW APPS.XXAKG_CER_MONTHEND_BALANCE_SMS
+(
+   ORG_ID,
+   REGION,
+   CUSTOMER_ID,
+   CUSTOMER_NUMBER,
+   CUSTOMER_NAME,
+   CUSTOMER_STATUS,
+   AM_PHONE_NO,
+   DEALER_PHONE_NO,
+   OFFICER_PHONE_NO
+)
+   BEQUEATH DEFINER
+AS
+   SELECT R.ORG_ID,
+          R.REGION_NAME,
+          C.CUSTOMER_ID,
+          C.CUSTOMER_NUMBER,
+          C.CUSTOMER_NAME,
+          C.STATUS,
+          (SELECT DISTINCT NVL (HOC.PHONE_NUMBER, 0)
+             FROM APPS.AR_CONTACTS_V ARC, APPS.HZ_ORG_CONTACTS_V HOC
+            WHERE     ARC.CONTACT_NUMBER = HOC.CONTACT_NUMBER
+                  AND ARC.CUSTOMER_ID = C.CUSTOMER_ID
+                  AND HOC.STATUS = 'A'
+                  AND HOC.CONTACT_STATUS = 'A'
+                  AND HOC.CONTACT_PRIMARY_FLAG = 'Y'
+                  AND HOC.CONTACT_POINT_TYPE = 'PHONE'
+                  AND ARC.JOB_TITLE = 'AM'
+                  AND ROWNUM = 1)
+             AM_PHONE_NO,
+          (SELECT DISTINCT NVL (HOC.PHONE_NUMBER, 0)
+             FROM APPS.AR_CONTACTS_V ARC, APPS.HZ_ORG_CONTACTS_V HOC
+            WHERE     ARC.CONTACT_NUMBER = HOC.CONTACT_NUMBER
+                  AND ARC.CUSTOMER_ID = C.CUSTOMER_ID
+                  AND HOC.STATUS = 'A'
+                  AND HOC.CONTACT_STATUS = 'A'
+                  AND HOC.CONTACT_PRIMARY_FLAG = 'Y'
+                  AND HOC.CONTACT_POINT_TYPE = 'PHONE'
+                  AND ARC.JOB_TITLE = 'Dealer'
+                  AND ROWNUM = 1)
+             DEALER_PHONE_NO,
+          NVL (C.ATTRIBUTE9, NULL) OFFICER_PHONE_NO
+     FROM APPS.AR_CUSTOMERS C, APPS.XXAKG_DISTRIBUTOR_BLOCK_M R
+    WHERE     R.ORG_ID = 83
+          AND C.CUSTOMER_ID = R.CUSTOMER_ID
+          AND C.STATUS = 'A'
+          AND EXISTS
+                 (SELECT 1
+                    FROM APPS.HZ_CUST_ACCT_SITES_ALL CS
+                   WHERE     CS.STATUS = 'A'
+                         AND R.ORG_ID = CS.ORG_ID
+                         AND C.CUSTOMER_ID = CS.CUST_ACCOUNT_ID);

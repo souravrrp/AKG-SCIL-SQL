@@ -1,0 +1,92 @@
+select * from apps.hz_cust_accounts HCA ,apps.hz_parties HP
+where HP.party_id=HCA.party_id
+and account_number='183808'
+
+select * from apps.hz_parties where PARTY_NAME='A4Tech'
+
+select * from apps.hz_cust_accounts where party_id=880237
+
+select  * from apps.hz_cust_acct_sites_all where CUST_ACCOUNT_ID=740392
+
+select * from apps.hz_cust_site_uses_all where  CUST_ACCT_SITE_ID=260685
+
+select * from apps.hz_customer_profiles where party_id=880237
+
+
+select
+HCA.CUST_ACCOUNT_ID,
+HCA.ORIG_SYSTEM_REFERENCE,
+HCA.ACCOUNT_NUMBER,
+HCA.CREATION_DATE,
+HCA.CREATED_BY,
+HCA.ATTRIBUTE1 Credit_Limit,
+HCA.ATTRIBUTE2 Additional_Credit_Limit,
+HCA.ATTRIBUTE3 SP_Credit_Limit,
+HCA.ATTRIBUTE4 Instrument_type,
+HCA.ATTRIBUTE7 Old_Lagacy_Number,
+HCA.STATUS,
+HCA.CUSTOMER_CLASS_CODE,
+HCA.ACCOUNT_NAME,
+HP.PARTY_NAME,
+HP.PARTY_NUMBER,
+HP.PARTY_ID_1,
+HP.PARTY_TYPE,
+HP.LAST_UPDATED_BY_1,
+HP.LAST_UPDATE_DATE_1,
+HP.CUSTOMER_KEY,
+HP.COUNTRY,
+HP.ADDRESS1,
+HP.ADDRESS2,
+HP.ADDRESS3,
+HP.ADDRESS4,
+HP.CITY,
+HP.CURR_FY_POTENTIAL_REVENUE Annual_Revenue,
+HP.CATEGORY_CODE,
+HP.SALES_CHANNEL_CODE,
+hl_ship.address1 ||Decode(hl_ship.address2,NULL,'',chr(10))
+||hl_ship.address2||Decode(hl_ship.address3,NULL,'', chr(10))
+||hl_ship.address3||Decode(hl_ship.address4,NULL,'', chr(10))
+||hl_ship.address4||Decode(hl_ship.city,NULL,'',chr( 10))
+||hl_ship.city ||Decode(hl_ship.state,NULL,'',',')
+||hl_ship.state ||Decode(hl_ship.postal_code,'',',')
+||hl_ship.postal_code ship_to_address,
+hl_bill.address1 ||Decode(hl_bill.address2,NULL,'',chr(10))
+||hl_bill.address2||Decode(hl_bill.address3,NULL,'', chr(10))
+||hl_bill.address3||Decode(hl_bill.address4,NULL,'', chr(10))
+||hl_bill.address4||Decode(hl_bill.city,NULL,'',chr( 10))
+||hl_bill.city ||Decode(hl_bill.state,NULL,'',',')
+||hl_bill.state ||Decode(hl_bill.postal_code,'',',')
+||hl_bill.postal_code bill_to_address,
+hca_bill.TERRITORY_ID,
+hca_bill.TERRITORY,
+terr.SEGMENT2 Division,
+terr.SEGMENT3 Region,
+hps_bill.PARTY_SITE_NUMBER SITE_NUMBER,
+hps_bill.PARTY_SITE_NAME Site_Name
+from 
+ apps.hz_cust_accounts HCA ,apps.hz_parties HP,
+apps.hz_cust_site_uses_all hcs_ship
+, apps.hz_cust_acct_sites_all hca_ship
+, apps.hz_party_sites hps_ship
+, apps.hz_parties hp_ship
+, apps.hz_locations hl_ship
+, apps.hz_cust_site_uses_all hcs_bill
+, apps.hz_cust_acct_sites_all hca_bill
+, apps.hz_party_sites hps_bill
+, apps.hz_parties hp_bill
+, apps.hz_locations hl_bill
+,apps.ra_territories terr
+where 
+HP.party_id=HCA.party_id
+AND ooh.ship_to_org_id = hcs_ship.site_use_id
+AND hcs_ship.cust_acct_site_id = hca_ship.cust_acct_site_id
+AND hca_ship.party_site_id = hps_ship.party_site_id
+AND hps_ship.party_id = hp_ship.party_id
+AND hps_ship.location_id = hl_ship.location_id
+AND ooh.invoice_to_org_id = hcs_bill.site_use_id
+AND hcs_bill.cust_acct_site_id = hca_bill.cust_acct_site_id
+AND hca_bill.party_site_id = hps_bill.party_site_id
+AND hps_bill.party_id = hp_bill.party_id
+AND hps_bill.location_id = hl_bill.location_id
+and terr.TERRITORY_ID=hca_bill.TERRITORY_ID
+---and HP.party_id='332942'

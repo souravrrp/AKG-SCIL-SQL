@@ -1,0 +1,202 @@
+select
+    'TXN' CST_TYPE,
+    c.*,
+    c.qty*c.acct_cost Value
+from (
+select
+    b.*,
+--    b.transaction_id,
+--    b.transaction_type_name,
+--    b.item_code,
+--    b.item_Desc,
+--    b.organization_id,
+--    b.transfer_organization_id,
+--    b.qty,
+--    b.txn_period,
+--    b.cost_org,
+    nvl(b.shipped_period,b.txn_period) Cost_Period,
+    decode(nvl(b.transaction_cost,0),
+                0,b.item_cost,
+                b.transaction_cost) Acct_Cost
+from (
+select
+--    a.*,
+    a.transaction_id,
+    a.transaction_type_name,
+    a.shipment_number,
+    a.inventory_item_id,
+    a.Item_Code,
+    a.Item_Desc,
+    a.Item_Category,
+    a.organization_id,
+    a.TRANSFER_ORGANIZATION_ID,
+    a.ORGANIZATION_CODE,
+    a.Txn_Date,
+    a.Shipped_Period,
+    a.Txn_Period,
+    a.Qty,
+    a.TRANSACTION_COST,
+    case when a.qty<0 then a.organization_id else nvl(a.transfer_organization_id,a.organization_id) end COST_ORG,
+    case 
+        when nvl(a.transaction_cost,0)<>0 then a.transaction_cost
+        else
+            case
+                when a.qty<0 then apps.fnc_get_item_cost (a.organization_id,a.inventory_item_id,to_char(a.txn_date,'MON-YY')) 
+                else apps.fnc_get_item_cost (nvl(a.transfer_organization_id,a.organization_id),a.inventory_item_id,nvl(a.shipped_period,a.txn_period))
+            end 
+    end ITEM_COST
+from (
+select 
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    mmt.shipment_number,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+    msi.description Item_Desc,
+--    mic.segment1||'|'||mic.segment2 Item_Category,
+    mic.segment1 Item_Category,    
+    ood.organization_id,
+    mmt.TRANSFER_ORGANIZATION_ID,
+    ood.ORGANIZATION_CODE,
+    trunc(mmt.transaction_date) Txn_Date,
+    to_char(trunc(rsh.shipped_date),'MON-YY') Shipped_Period,
+    to_char(trunc(mmt.transaction_date),'MON-YY') Txn_Period,    
+--    nvl(mmt.transaction_quantity,0) Qty,
+    nvl(mmt.primary_quantity,mmt.transaction_quantity) Qty,
+    mmt.TRANSACTION_COST 
+from 
+    inv.mtl_material_transactions mmt,
+    inv.mtl_system_items_b msi,
+    apps.mtl_item_categories_v mic,
+    apps.org_organization_definitions ood,
+    inv.mtl_transaction_types mtt,
+    po.rcv_shipment_headers rsh,
+    po.rcv_shipment_lines rsl--,
+--    po.rcv_transactions rt
+where 
+    ood.SET_OF_BOOKS_ID=2025
+    and ood.operating_unit=:operating_unit
+--    and ood.operating_unit=85
+    and msi.organization_id=ood.organization_id
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and msi.organization_id=mmt.organization_id
+    and msi.inventory_item_id=mmt.inventory_item_id
+    and mmt.transaction_type_id=mtt.transaction_type_id
+    and mmt.shipment_number=rsh.shipment_num(+)
+    and mmt.organization_id=rsh.organization_id
+    and mmt.shipment_number is not null
+    -----
+--    and rt.shipment_header_id=rsh.shipment_header_id
+--    and rt.transaction_type='DELIVER'
+--    and mmt.rcv_transaction_id=rt.transaction_id
+    -------    
+    and rsl.shipment_header_id=rsh.shipment_header_id
+    and mmt.inventory_item_id=rsl.item_id
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ('DRCT.CLNK.0001')
+--    and msi.inventory_item_id=24440
+--    and mmt.SUBINVENTORY_CODE='CLINKER'
+--    and ood.organization_code='KTD'
+   -- and mic.segment1 in ('INGREDIENT','INDIRECT MATERIAL')
+and mic.segment1 in ('AUTOMOBILE','CIVIL','ELECTRICAL','MECHANICAL','TOOLS','PRODUCTION','LAB AND CHEMICAL','ELECTRICAL EQUIPMENTS')
+--    and mic.segment1=:item_category
+--    and mic.segment1='AUTOMOBILE'
+    and trunc(mmt.transaction_date) <'27-march-2014'
+--    and mmt.transaction_id=9427652--3286185
+--    and trunc(mmt.transaction_date) between '01-DEC-2013' and '31-DEC-2013'
+--    and ac.period_id=845
+group by
+    mmt.transaction_id,
+    mtt.transaction_type_name,
+    mmt.shipment_number,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+    msi.description,
+--    mic.segment1||'|'||mic.segment2,
+    mic.segment1,
+    ood.organization_id,
+    ood.ORGANIZATION_CODE,
+    mmt.TRANSFER_ORGANIZATION_ID,
+--    to_char(trunc(mmt.transaction_date),'MON-YY'),
+    trunc(rsh.shipped_date),
+    trunc(mmt.transaction_date),
+    mmt.primary_quantity,
+    mmt.transaction_quantity,
+    mmt.TRANSACTION_COST    
+having
+    sum(nvl(mmt.primary_quantity,mmt.transaction_quantity))<>0
+union
+select
+    decode(sign(mmt.transfer_transaction_id-mmt.transaction_id),
+            -1,mmt.transfer_transaction_id,
+            mmt.transaction_id) transaction_id, 
+--    mmt.transaction_id,
+    mtt.transaction_type_name,
+    mmt.shipment_number,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3 Item_Code,
+    msi.description Item_Desc,
+--    mic.segment1||'|'||mic.segment2 Item_Category,
+    mic.segment1 Item_Category,    
+    ood.organization_id,
+    mmt.TRANSFER_ORGANIZATION_ID,
+    ood.ORGANIZATION_CODE,
+    trunc(mmt.transaction_date) Txn_Date,
+    null Shipped_Period,
+    to_char(trunc(mmt.transaction_date),'MON-YY') Txn_Period,    
+--    nvl(mmt.primary_quantity,0) Qty,
+    nvl(mmt.primary_quantity,mmt.transaction_quantity) Qty,
+    mmt.TRANSACTION_COST 
+from 
+    inv.mtl_material_transactions mmt,
+    inv.mtl_system_items_b msi,
+    apps.mtl_item_categories_v mic,
+    apps.org_organization_definitions ood,
+    inv.mtl_transaction_types mtt
+where 
+    ood.SET_OF_BOOKS_ID=2025
+    and ood.operating_unit=:operating_unit
+--    and ood.operating_unit=85
+    and msi.organization_id=ood.organization_id
+    and msi.organization_id=mic.organization_id
+    and msi.inventory_item_id=mic.inventory_item_id
+    and msi.organization_id=mmt.organization_id
+    and msi.inventory_item_id=mmt.inventory_item_id
+    and mmt.transaction_type_id=mtt.transaction_type_id
+    and mmt.shipment_number is null
+--    and msi.segment1||'.'||msi.segment2||'.'||msi.segment3 in ('DRCT.CLNK.0001')
+--    and msi.inventory_item_id=24440
+--    and mmt.SUBINVENTORY_CODE='CLINKER'
+--    and ood.organization_code='KTD'
+    and mic.segment1 in ('AUTOMOBILE','CIVIL','ELECTRICAL','MECHANICAL','TOOLS','PRODUCTION','LAB AND CHEMICAL','ELECTRICAL EQUIPMENTS')
+--    and mic.segment1 in ('WIP','FINISH GOODS')
+--    and mic.segment1=:item_category
+--    and mic.segment1='AUTOMOBILE'
+    and trunc(mmt.transaction_date) <'27-march-2014'
+--    and mmt.transaction_id=3286185--9427652--3286185
+--    and trunc(mmt.transaction_date) between '01-DEC-2013' and '31-DEC-2013'
+--    and ac.period_id=845
+group by
+    mmt.transaction_id,
+    mmt.transfer_transaction_id,
+    mtt.transaction_type_name,
+    mmt.shipment_number,
+    msi.inventory_item_id,
+    msi.segment1||'.'||msi.segment2||'.'||msi.segment3,
+    msi.description,
+--    mic.segment1||'|'||mic.segment2,
+    mic.segment1,
+    ood.organization_id,
+    ood.ORGANIZATION_CODE,
+    mmt.TRANSFER_ORGANIZATION_ID,
+--    to_char(trunc(mmt.transaction_date),'MON-YY'),
+--    trunc(rsh.shipped_date),
+    trunc(mmt.transaction_date),
+    mmt.primary_quantity,
+    mmt.transaction_quantity,
+    mmt.TRANSACTION_COST    
+having
+    sum(nvl(mmt.primary_quantity,mmt.transaction_quantity))<>0
+) a
+) b
+) c

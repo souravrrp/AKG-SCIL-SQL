@@ -1,0 +1,171 @@
+
+	SCIL
+
+Special to Transfer OPC Cement
+Popular to Transfer Special Cement
+
+As per Referance Scrap Recive
+
+
+
+CMNT.SBLK.0001		
+CMNT.OBLK.0001	
+CMNT.PBLK.0001	
+
+
+2110.NUL.4020107.9999.00
+
+
+Admixture Transfer SCI to RMC 
+
+
+
+
+	MRB
+
+Item Qty Transfer for Marble
+
+Adjust RM for MRB Batch Closing
+
+2220.NUL.4020107.9999.00
+
+
+	CER
+
+Adj_Cer_Kiln_Color_Chang_Feb_16
+
+Receive issue for Batch Close
+
+Item Qty Transfer Wrong Code
+
+Item Qty Transfer Color to Color
+
+Adjust RM for CER Batch Closing
+
+Adjust FG for Packing Batch Closing
+
+Adjust RM for CER Batch Cancle
+
+2200.NUL.4020107.9999.00
+
+Lot Control for Issue Recived
+
+SORCE : CER_WIP_STCK_RECV_MAY_15
+
+LOT : WIP_ADJST_LOT_1
+
+UWCA.VRNP.0001	UWCB-30-APR-2016-24	2
+UWCA.IMNW.0001	UWCA-30-APR-2016-23	5
+
+	RMC
+
+Monthly RM Adjustment For RMC
+
+As per mail Referance RM Issue
+
+As per mail Referance Scrap Issue
+
+As per Referance Scrap Recive
+
+2400.NUL.4020107.9999.00
+
+
+	RMT
+
+Monthly RM Adjustment For RMT
+
+As per mail Referance RM Issue
+
+As per mail Referance Scrap Issue
+
+As per Referance Scrap Recive
+
+2400.NUL.4020107.9999.00
+
+	RMU			DRCT.STNE.0001	DRCT.STNE.0002	DRCT.SAND.0001 CMNT.SBLK.0001	INDI.CHEM.0003
+
+Monthly RM Adjustment For RMU
+
+As per mail Referance RM Issue
+
+As per mail Referance Scrap Issue
+
+As per Referance Scrap Recive
+
+2400.NUL.4020107.9999.00
+
+
+
+
+
+	AKC
+
+As per Ref Item Code qty Trnsf
+
+2300.NUL.4020107.9999.00
+
+Subinventory Transfer
+CACS.PSUT.0001
+
+
+
+
+	CPL
+
+
+As per Ref Item Code qty Trnsf
+
+Worng Code to Right Code Trans
+
+2120.NUL.4020107.9999.00
+
+
+
+
+	PSU
+
+Item Qty Transfer for PSU
+As per Referance Scrap Recive
+
+2110.NUL.4020107.9999.00
+
+
+	SCD
+
+Item Qty Transfer SCD to PSU
+
+2110.NUL.4020107.9999.00
+
+SCD to PSU MTL Transfer Price List
+2110.NUL.1080201.9999.00	Transfer Credit
+2110.NUL.4020106.9999.00	Price Variance
+2110.NUL.1080201.9999.00
+
+
+
+	SCP
+
+Item Qty Transfer From SCP
+
+2110.NUL.4020107.9999.00
+
+
+	BCM
+Bolder Transfer BCM to SCI for Crash
+Lime Stone Transfer SCI to BCM for After Crash
+
+DRCT.LIME.0001
+DRCT.LIME.0002
+
+
+
+
+
+
+UWBA-27-APR-2016-39	5
+UWBA-27-APR-2016-40	55
+UWBB-27-APR-2016-33	11
+UWBB-27-APR-2016-34	13
+UWBB-27-APR-2016-35	1
+RFWB-27-APR-2016-33	5
+RFWB-27-APR-2016-34	38

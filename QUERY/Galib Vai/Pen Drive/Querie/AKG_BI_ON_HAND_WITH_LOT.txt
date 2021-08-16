@@ -1,0 +1,300 @@
+/* Formatted on 5/19/2013 3:14:08 PM (QP5 v5.136.908.31019) */
+  SELECT *
+    FROM (  SELECT org_id,
+                   item_code,
+                   item_id,
+                   subinv,
+                   item_description,
+                   t_uom,
+                   s_uom,
+                   item_catg,
+                   item_type,
+                   lot_number,
+                   Lot_Origination_Date,
+                   lot_grade,
+                   item_locator,
+                   lot_status,
+                   hold_date,
+                   LOT_REMARKS,
+                   LOT_WIDTH,
+                   LOT_LENGTH,
+                   DUMMY_IND,
+                   SUM (target_qty) AS on_hand_qty,
+                   SUM (s_qty) AS s_on_hand_qty,
+                   apps.fnc_get_item_cost (
+                      org_id,
+                      item_id,
+                      TO_CHAR (
+                         TO_DATE ('VALUEOF(NQ_SESSION.P_DAT1)', 'YYYY-MM-DD'), --'VALUEOF(NQ_SESSION.P_DAT2)'
+                         'MON-RR'))
+                      AS item_cost,
+                   source
+              FROM (  SELECT moqv.organization_id org_id,
+                             a.inventory_item_id item_id,
+                             mic.segment1 AS item_catg,
+                             mic.segment2 AS item_type,
+                             moqv.subinventory_code subinv,
+                             a.CONCATENATED_SEGMENTS item_code,
+                             DECODE (
+                                SUBSTR (UPPER (NVL (a.attribute27, 'X')), 1, 1),
+                                'F',
+                                'Foreign',
+                                'Local')
+                                source,
+                             a.description item_description,
+                             transaction_uom_code AS t_uom,
+                             moqv.secondary_uom_code AS s_uom,
+                             moqv.lot_number AS lot_number,
+                             mtl.origination_date Lot_Origination_Date,
+                             mtl.grade_code lot_grade,
+                             mil.concatenated_segments item_locator,
+                             mms.status_code lot_status,
+                             mtl.hold_date hold_date,
+                             CASE
+                                WHEN MTL.ATTRIBUTE_CATEGORY IN
+                                           ('WIP|REWINDING COIL',
+                                            'WIP|RE REWINDING COIL',
+                                            'WIP|RE RE REWINDING COIL')
+                                THEN
+                                   MTL.ATTRIBUTE4
+                                WHEN MTL.ATTRIBUTE_CATEGORY =
+                                        'WIP|REWINDED BUILD UP COIL'
+                                THEN
+                                   MTL.ATTRIBUTE3
+                                WHEN MTL.ATTRIBUTE_CATEGORY IN
+                                           ('WIP|PICKLED COIL',
+                                            'WIP|RE PICKLED COIL',
+                                            'WIP|RE RE PICKLED COIL',
+                                            'WIP|ROLLING COIL')
+                                THEN
+                                   MTL.ATTRIBUTE5
+                                WHEN MTL.ATTRIBUTE_CATEGORY = 'WIP|GP COIL'
+                                THEN
+                                   MTL.ATTRIBUTE9
+                             END
+                                AS LOT_REMARKS,
+                             CASE
+                                WHEN MTL.ATTRIBUTE_CATEGORY = 'INGREDIENT|HR COIL'
+                                THEN
+                                   MTL.ATTRIBUTE3
+                                WHEN MTL.ATTRIBUTE_CATEGORY =
+                                        'WIP|REWINDED BUILD UP COIL'
+                                THEN
+                                   MTL.ATTRIBUTE2
+                                ELSE
+                                   MTL.ATTRIBUTE10
+                             END
+                                AS LOT_WIDTH,
+                             CASE
+                                WHEN MTL.ATTRIBUTE_CATEGORY <> 'INGREDIENT|HR COIL'
+                                THEN
+                                   MTL.ATTRIBUTE1
+                             END
+                                AS LOT_LENGTH,
+                             CASE
+                                WHEN MTL.ATTRIBUTE_CATEGORY = 'WIP|GP COIL'
+                                THEN
+                                   MTL.ATTRIBUTE15
+                             END
+                                AS DUMMY_IND,
+                             SUM (transaction_quantity) target_qty,
+                             NVL (SUM (SECONDARY_TRANSACTION_QUANTITY), 0) s_qty
+                        FROM apps.mtl_onhand_quantities_detail moqv,
+                             APPS.mtl_system_items_b_kfv a,
+                             apps.mtl_item_categories_v mic,
+                             apps.mtl_lot_numbers mtl,
+                             apps.mtl_item_locations_kfv mil,
+                             apps.mtl_material_statuses_vl mms
+                       WHERE     moqv.inventory_item_id = a.inventory_item_id
+                             AND moqv.organization_id = a.organization_id
+                             AND mic.inventory_item_id = a.inventory_item_id
+                             AND mic.organization_id = a.organization_id
+                             AND moqv.organization_id = mtl.organization_id(+)
+                             AND moqv.inventory_item_id = mtl.inventory_item_id(+)
+                             AND moqv.lot_number = mtl.lot_number(+)
+                             AND moqv.locator_id = mil.inventory_location_id(+)
+                             AND mtl.status_id = mms.status_id(+)
+                             AND mic.category_set_id = 1
+                    GROUP BY moqv.organization_id,
+                             a.inventory_item_id,
+                             mic.segment1,
+                             mic.segment2,
+                             moqv.subinventory_code,
+                             DECODE (
+                                SUBSTR (UPPER (NVL (a.attribute27, 'X')), 1, 1),
+                                'F',
+                                'Foreign',
+                                'Local'),
+                             a.CONCATENATED_SEGMENTS,
+                             a.description,
+                             transaction_uom_code,
+                             moqv.secondary_uom_code,
+                             moqv.lot_number,
+                             mtl.grade_code,
+                             mil.concatenated_segments,
+                             mms.status_code,
+                             mtl.origination_date,
+                             mtl.hold_date,
+                             MTL.ATTRIBUTE_CATEGORY,
+                             MTL.ATTRIBUTE4,
+                             MTL.ATTRIBUTE3,
+                             MTL.ATTRIBUTE5,
+                             MTL.ATTRIBUTE9,
+                             MTL.ATTRIBUTE10,
+                             MTL.ATTRIBUTE1,
+                             MTL.ATTRIBUTE2,
+                             MTL.ATTRIBUTE15
+                    UNION
+                      SELECT a.organization_id org_id,
+                             a.inventory_item_id,
+                             mic.segment1 AS catg,
+                             mic.segment2 AS TYPE,
+                             mmt.subinventory_code subinv,
+                             a.CONCATENATED_SEGMENTS item_id,
+                             DECODE (
+                                SUBSTR (UPPER (NVL (a.attribute27, 'X')), 1, 1),
+                                'F',
+                                'Foreign',
+                                'Local')
+                                source,
+                             a.description,
+                             mmt.transaction_uom,
+                             mmt.secondary_uom_code,
+                             mtl.lot_number,
+                             mln.origination_date Lot_Origination_Date,
+                             mln.grade_code,
+                             mil.concatenated_segments LOCATOR,
+                             mms.status_code,
+                             mln.hold_date,
+                             CASE
+                                WHEN MLN.ATTRIBUTE_CATEGORY IN
+                                           ('WIP|REWINDING COIL',
+                                            'WIP|RE REWINDING COIL',
+                                            'WIP|RE RE REWINDING COIL')
+                                THEN
+                                   MLN.ATTRIBUTE4
+                                WHEN MLN.ATTRIBUTE_CATEGORY =
+                                        'WIP|REWINDED BUILD UP COIL'
+                                THEN
+                                   MLN.ATTRIBUTE3
+                                WHEN MLN.ATTRIBUTE_CATEGORY IN
+                                           ('WIP|PICKLED COIL',
+                                            'WIP|RE PICKLED COIL',
+                                            'WIP|RE RE PICKLED COIL',
+                                            'WIP|ROLLING COIL')
+                                THEN
+                                   MLN.ATTRIBUTE5
+                                WHEN MLN.ATTRIBUTE_CATEGORY = 'WIP|GP COIL'
+                                THEN
+                                   MLN.ATTRIBUTE9
+                             END
+                                AS LOT_REMARKS,
+                             CASE
+                                WHEN MLN.ATTRIBUTE_CATEGORY = 'INGREDIENT|HR COIL'
+                                THEN
+                                   MLN.ATTRIBUTE3
+                                WHEN MLN.ATTRIBUTE_CATEGORY =
+                                        'WIP|REWINDED BUILD UP COIL'
+                                THEN
+                                   MLN.ATTRIBUTE2
+                                ELSE
+                                   MLN.ATTRIBUTE10
+                             END
+                                AS LOT_WIDTH,
+                             CASE
+                                WHEN MLN.ATTRIBUTE_CATEGORY <> 'INGREDIENT|HR COIL'
+                                THEN
+                                   MLN.ATTRIBUTE1
+                             END
+                                AS LOT_LENGTH,
+                             CASE
+                                WHEN MLN.ATTRIBUTE_CATEGORY = 'WIP|GP COIL'
+                                THEN
+                                   MLN.ATTRIBUTE15
+                             END
+                                AS DUMMY_IND,
+                             -SUM (mmt.primary_quantity) target_qty,
+                             NVL (-SUM (mmt.SECONDARY_TRANSACTION_QUANTITY), 0)
+                                s_qty
+                        FROM apps.mtl_material_transactions mmt,
+                             apps.mtl_txn_source_types mtst,
+                             apps.mtl_system_items_b_kfv a,
+                             apps.mtl_item_categories_v mic,
+                             apps.mtl_transaction_lot_numbers mtl,
+                             apps.mtl_item_locations_kfv mil,
+                             apps.mtl_material_statuses_vl mms,
+                             apps.mtl_lot_numbers mln
+                       WHERE mmt.transaction_date >=
+                                TO_DATE ('VALUEOF(NQ_SESSION.P_DAT1)',
+                                         'YYYY-MM-DD')
+                                + 1
+                             --                                TO_DATE ('VALUEOF(NQ_SESSION.P_DAT2)',
+                             --                                         'DD-MON-YYYY')
+                             --                                + 1
+                             AND mmt.transaction_source_type_id =
+                                   mtst.transaction_source_type_id
+                             AND mmt.inventory_item_id = a.inventory_item_id
+                             AND mmt.organization_id = a.organization_id
+                             AND mic.inventory_item_id = a.inventory_item_id
+                             AND mic.organization_id = a.organization_id
+                             AND mmt.transaction_id = mtl.transaction_id(+)
+                             AND mtl.organization_id = mln.organization_id(+)
+                             AND mtl.inventory_item_id = mln.inventory_item_id(+)
+                             AND mtl.lot_number = mln.lot_number
+                             AND mmt.locator_id = mil.inventory_location_id(+)
+                             AND mln.status_id = mms.status_id(+)
+                             AND mic.category_set_id = 1
+                             AND (mmt.Logical_Transaction = 2
+                                  OR mmt.Logical_Transaction IS NULL)
+                    GROUP BY a.organization_id,
+                             a.inventory_item_id,
+                             mic.segment1,
+                             mic.segment2,
+                             mmt.subinventory_code,
+                             DECODE (
+                                SUBSTR (UPPER (NVL (a.attribute27, 'X')), 1, 1),
+                                'F',
+                                'Foreign',
+                                'Local'),
+                             a.CONCATENATED_SEGMENTS,
+                             a.description,
+                             mmt.transaction_uom,
+                             mmt.secondary_uom_code,
+                             mtl.lot_number,
+                             mln.grade_code,
+                             mln.origination_date,
+                             mil.concatenated_segments,
+                             mms.status_code,
+                             mln.hold_date,
+                             MLN.ATTRIBUTE_CATEGORY,
+                             MLN.ATTRIBUTE4,
+                             MLN.ATTRIBUTE3,
+                             MLN.ATTRIBUTE5,
+                             MLN.ATTRIBUTE9,
+                             MLN.ATTRIBUTE10,
+                             MLN.ATTRIBUTE1,
+                             MLN.ATTRIBUTE2,
+                             MLN.ATTRIBUTE15) oq
+          --       where org_id=464 and item_code LIKE 'GPNF%'
+          GROUP BY org_id,
+                   item_code,
+                   item_id,
+                   subinv,
+                   item_description,
+                   t_uom,
+                   s_uom,
+                   item_catg,
+                   item_type,
+                   lot_number,
+                   Lot_Origination_Date,
+                   lot_grade,
+                   item_locator,
+                   lot_status,
+                   hold_date,
+                   LOT_REMARKS,
+                   LOT_WIDTH,
+                   LOT_LENGTH,
+                   DUMMY_IND,
+                   source
+            HAVING SUM (target_qty) > 0)
+ORDER BY org_id, 2

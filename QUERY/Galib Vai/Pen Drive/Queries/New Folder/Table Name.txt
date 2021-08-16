@@ -1,0 +1,8 @@
+Formula		FM_FORM_MST
+		FM_MATL_DTL 
+		fm_matl_dtl 
+Recipe		gmd_recipes 
+		gmd_recipe_process_loss 
+		GMD_RECIPE_PROCESS_LOSS 
+		GMD_RECIPE_VALIDITY_RULES 
+Operatin	GMD_OPERATIONS_VL 
